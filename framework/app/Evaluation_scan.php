@@ -14,7 +14,7 @@ class evaluation_scan extends Model {
 		'next_due_date', 'call_register_date_time', 'call_attend_date_time',
 		'call_complete_date_time', 'user_attended', 'working_status',
 		'service_rendered', 'remarks', 'nature_of_problem', 'sign_of_engineer',
-		'sign_stamp_of_incharge', 'is_contamination','code_error','Steps_to_solve_the_problem',
+		'sign_stamp_of_incharge', 'is_contamination','code_error','Steps_to_solve_the_problem','governorate','directorate','type_of_healthfcilityS',
 
 	];
 	public function equipment() {

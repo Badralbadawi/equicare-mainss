@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('item_id')->nullable();
             $table->integer('equipment_id')->nullable();
             $table->string('quantity')->nullable();
-            $table->string('name')->nullable();
+            $table->string('spare_name')->nullable();
             $table->integer('SPARE_NO')->nullable();
             $table->string('type_sp')->nullable();
             $table->timestamps();

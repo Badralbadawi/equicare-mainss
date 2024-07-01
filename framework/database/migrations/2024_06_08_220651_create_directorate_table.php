@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('directorates', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('governorate_id')->nullable();
+            $table->string('governorate')->nullable();
             $table->string('name');
             $table->string('short_name');
             $table->timestamp('deleted_at')->nullable();

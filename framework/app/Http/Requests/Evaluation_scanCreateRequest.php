@@ -34,6 +34,10 @@ class Evaluation_scanCreateRequest extends FormRequest {
 			'equipment_stops_date_time'=> 'required',
 			'reasons_stopping'=> 'required',
 			 'assess_equipment'=> 'required',
+			 'governorate'=> 'required',
+			 'directorate'=> 'required',
+			//   'type_of_healthfcilityS'=> 'required',
+ 
 			// ''=> 'required',
 			// ''=> 'required'
 

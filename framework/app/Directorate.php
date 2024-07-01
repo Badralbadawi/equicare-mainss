@@ -10,10 +10,10 @@ class Directorate extends Model {
 	protected $table = 'directorates';
 	protected $guard_name = 'web';
 
-	protected $fillable = ['name','short_name','governorate_id'];
+	protected $fillable = ['name','short_name','governorate'];
 
 	public function governorate() {
-		return $this->belongsTo('App\Governorate','governorate_id')->withTrashed();
+		return $this->belongsTo('App\Governorate','governorate')->withTrashed();
 	}
 	public function  hospital() {
 		return $this->hasMany('App\Hospital', 'directorate_id');

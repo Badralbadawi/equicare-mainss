@@ -54,7 +54,7 @@ class DirectorateController extends Controller
 		$directorate = new Directorate;
 		$directorate->name = $request->name;
 		$directorate->short_name = $request->short_name;
-		$directorate->governorate_id = $request->governorate_id;
+		$directorate->governorate = $request->governorate;
 		$directorate->save();
 
 		return redirect()->route('directorates.index')
@@ -77,7 +77,7 @@ class DirectorateController extends Controller
 		$directorate = Directorate::findOrFail($id);
 		$directorate->name = $request->name;
 		$directorate->short_name = $request->short_name;
-		$directorate->governorate_id= $request->governorate;
+		$directorate->governorate= $request->governorate;
 		$directorate->save();
 
 		return redirect()->route('directorates.index')

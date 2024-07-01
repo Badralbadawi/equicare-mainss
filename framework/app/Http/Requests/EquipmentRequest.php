@@ -35,6 +35,9 @@ class EquipmentRequest extends FormRequest {
 			'provenance'=> 'required',
 			'Donor'=> 'required',
 			'CATALOGUE'=> 'required',
+			'governorate'=> 'required',
+			'directorate'=> 'required',
+			// 'typeof_healthfcilityS'=> 'required',
 	
 			// 'phone_donors'=> 'required',
 			// 'name_donors'=> 'required',

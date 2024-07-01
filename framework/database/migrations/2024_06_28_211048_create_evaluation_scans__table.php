@@ -29,7 +29,11 @@ return new class extends Migration
 			$table->text('remarks')->nullable(); // ملاحظات وتووصيات التقييم ملاحمم
 			// $table->date('next_due_date')->nullable();
 			// $table->timestamp('call_complete_date_time')->nullable();
-			$table->integer('user_attended')->nullable(); //who attended
+			// $table->integer('user_attended')->nullable();
+			$table->string('directorate')->nullable();
+			$table->string('governorate')->nullable();
+			$table->string('type_of_healthfcilityS')->nullable();
+ //who attended
 			// $table->string('service_rendered')->nullable();
 			// $table->text('nature_of_problem')->nullable();
 			$table->string('sign_of_engineer')->nullable();

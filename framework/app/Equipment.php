@@ -13,7 +13,7 @@ class Equipment extends Model {
 		'name', 'short_name', 'user_id', 'hospital_id', 'company', 'model',
 		'sr_no', 'unique_id', 'department', 'order_date', 'date_of_purchase'
 		, 'date_of_installation', 'warranty_due_date','production_date','provenance', 'service_engineer_no','CATALOGUE','Donor',
- 'is_critical', 'notes','qr_id','name_donors','name_donors','phone_donors'
+ 'is_critical', 'notes','qr_id','name_donors','name_donors','phone_donors','governorate','directorate','type_of_healthfcilityS',
 	];
 
 	public function hospital() {

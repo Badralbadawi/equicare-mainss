@@ -69,8 +69,7 @@
                                                 {{ $evaluations->call_register_date_time ? date('Y-m-d h:i A', strtotime($preventive->call_register_date_time)) : '-' }}
                                             </td> --}}
                                             {{-- <td> {{ date_change($evaluations->next_due_date) ?? '-' }}</td> --}}
-                                            <td>{{ $evaluations->user_attended_fn ? $evaluations->user_attended_fn->name : '-' }}
-                                            {{-- </td>
+ء                                            {{-- </td>
                                             <td>{{ $evaluations->user_attended_fn ? date('Y-m-d H:i A', strtotime($evaluations->call_attend_date_time)) : '-' }}
                                             </td>
                                             <td>{{ $evaluations->call_complete_date_time ? date('Y-m-d H:i A', strtotime($evaluations->call_complete_date_time)) : '-' }} --}}

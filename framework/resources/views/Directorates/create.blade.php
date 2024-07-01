@@ -38,8 +38,21 @@
 								{!! Form::text('short_name',null,['class' => 'form-control']) !!}
 							</div>
 								<div class="form-group col-md-6">
-									<label for="governorate"> @lang('equicare.Governorate') </label>
-									{!! Form::select('governorate',$governorates??[],null,['class'=>'form-control','placeholder'=>'--select--']) !!}
+									@if(isset($governorates))
+									<div class="form-group col-md-6">
+										<label for="type_of_healthfacility"> @lang('equicare.Governorate')</label>
+										<select name="governorate" id="governorate" class="form-control" placeholder='--select--' required>
+											<option value="">-select--</option>
+											@foreach ($governorates as $id => $name)
+												<option value="{{ $name }}">{{ $name }}</option>
+											@endforeach
+										</select>
+									</div>
+									@endif
+									{{-- <label for="governorate"> @lang('equicare.Governorate') </label>
+									{!! Form::select('governorate',$governorates[],['class'=>'form-control','placeholder'=>'--select--']) !!}
+									@endif
+ --}}
 								</div>
 							<div class="form-group col-md-12">
 								{!! Form::submit(__('equicare.submit'),['class' => 'btn btn-primary btn-flat']) !!}

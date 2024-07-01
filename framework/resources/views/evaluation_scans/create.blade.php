@@ -24,18 +24,20 @@
 				@include ('errors.list')
 				<div class="row">
 										
-					<div class="form-group col-md-4">
+					{{-- <div class="form-group col-md-4">
 						<label for="governorate"> @lang('equicare.Governorate') </label>
-						{!! Form::select('governorate',$governorate??[],null,['class'=>'form-control','placeholder'=>'--select--']) !!}
-					</div>
-					<div class="form-group col-md-4">
+						{!! Form::select('governorate',$governorate??[],null,['class'=>'form-control governorate_id_select2','placeholder'=>'--select--']) !!}
+					</div> --}}
+
+
+					{{-- <div class="form-group col-md-4">
 						<label for="directorate"> @lang('equicare.directorate') </label>
-						{!! Form::select('directorate',$directorate??[],null,['class'=>'form-control','placeholder'=>'--select--']) !!}
-					</div>
-					<div class="form-group col-md-4">
+						{!! Form::select('directorate',$directorate??[],null,['class'=>'form-control directorate_id_select2','placeholder'=>'--select--']) !!}
+					</div> --}}
+					{{-- <div class="form-group col-md-4">
 						<label for="type_of_healthfcility"> @lang('equicare.type_of_healthfcility') </label>
-						{!! Form::select('type_of_healthfacility',$type_of_healthfacilitys??[],null,['class'=>'form-control','placeholder'=>'--select--']) !!}
-					</div>
+						{!! Form::select('type_of_healthfacilityS',$type_of_healthfacilityS??[],null,['class'=>'form-control type_of_healthfacility_id_select2','placeholder'=>'--select--']) !!}
+					</div> --}}
 
 
 					{{-- <div class="form-group col-md-4">
@@ -50,6 +52,22 @@
 						{!! Form::select('hospital',($hospitals)??[],null,['class'=>'form-control
 						hospital_select2','placeholder'=>'Select']) !!}
 					</div> --}}
+					<div class="form-group col-md-4">
+						<label for="governorate"> @lang('equicare.Governorate') </label>
+						<input type="text" name="governorate" class=" governorate form-control" value="" disabled />
+					</div>
+
+				
+				<div class="form-group col-md-4">
+					<label for="governorate"> @lang('equicare.directorate') </label>
+					<input type="text" name="directorate" class=" directorate form-control" value="" disabled />
+				</div>
+			
+			<div class="form-group col-md-4">
+				<label for="governorate"> @lang('equicare.type_of_healthfacility') </label>
+				<input type="text" name="type_of_healthfacilityS" class=" type_of_healthfacilityS form-control" value="" disabled />
+			</div>
+
 					
 					<div class="form-group col-md-4">
 						<label for="department"> @lang('equicare.hospital') </label>
@@ -127,47 +145,8 @@
 				<form class="form" method="post" action="{{ route('evaluation_scans.store') }}">
 					{{ csrf_field() }}
 					{{ method_field('POST') }}
-					{{-- <div class="row">
-						<div class="form-group col-md-4">
-							<label>@lang('equicare.call_handle'):</label>
-							<div class="radio iradio">
-								<label class="login-padding">
-									{!! Form::radio('call_handle', 'internal')!!} @lang('equicare.internal')
-								</label>
-								<label>
-									{!! Form::radio('call_handle', 'external',null,['id'=>'external'])!!} @lang('equicare.external')
-								</label>
-							</div>
-						</div>
-						<div class="form-group col-md-4 report_no none-display">
-							<label for="department"> @lang('equicare.report_number') </label>
-							<input type="text" name="report_no" class="form-control" value="" />
-						</div>
-					</div>  --}}
 					<div class="row">
-						{{-- <div class="form-group col-md-4">
-							<label for="reasons_stopping"> @lang('equicare.assess equipment') </label>
-							<div class="input-group">
-
-							<input type="textarea" name="assess_equipment" class="form-control" value="" />
-							<span class="input-group-addon">
-								<i class="fa fa-clock-o"></i>
-							</span> --}}
-						{{-- </div> --}}
-						{{-- </div> --}}
-						{{-- <div class="form-group col-md-4">
-							<label>@lang('equicare.assess equipment')</label>
-							{!! Form::select('assess_equipment',[
-							'excellent' => __("equicare.excellent"),
-							'very good' => __("equicare.very good"),
-							'good' => __("equicare.good"),
-							'unacceptable' => __("equicare.unacceptable"),
-
-							'Discontinued service' => __("equicare.Discontinued service")
-
-							
-							],null,['placeholder' => '--select--','class' => 'form-control']) !!}
-						</div> --}}
+	
 						<div class="form-group col-md-4">
 							<label>@lang('equicare.assess equipment')</label>
 							{!! Form::select('assess_equipment', [
@@ -181,15 +160,6 @@
 
 
 
-						{{-- <div class="form-group col-md-4">
-							<label for="department"> @lang('equicare.equipment_stops_date_time') </label>
-							<div class="input-group">
-								<input type="text" name="equipment_stops_date_time" class="form-control call_register_date_time"
-									value="" />
-								<span class="input-group-addon">
-									<i class="fa fa-clock-o"></i>
-								</span>
-							</div> --}}
 							<div class="form-group col-md-4 equipment_stops_date_time_container">
 								<label for="department"> @lang('equicare.equipment_stops_date_time') </label>
 								<div class="input-group">
@@ -216,7 +186,7 @@
 									'Consists' => __("equicare.Consists"),
 
 								], null, ['placeholder' => '--select--', 'class' => 'form-control', 'id' => 'reasons_stopping']) !!}
-							</div>
+d							</div>
 
 						</div>
 						<div class="form-group col-md-4">
@@ -229,7 +199,7 @@
 							</div>
 	
 						</div>
-						<div class="form-group col-md-4">
+						<div class="form-group col-md-4 equipment_stops_date_time_container">
 							<label>@lang('equicare.working_statu')</label>
 							{!! Form::select('working_status',[
 							'working' => __("equicare.working"),
@@ -237,11 +207,76 @@
 							'pending' => __("equicare.pending")
 							],null,['placeholder' => '--select--','class' => 'form-control']) !!}
 						</div>
-						<div class="form-group col-md-4">
+						<div class="form-group col-md-4 equipment_stops_date_time_container">
 							<label>@lang('equicare.remark')</label>
 							{!! Form::textarea('remarks',null,['rows' => 2, 'class' => 'form-control']) !!}
 						</div>
+						<div id="inputContainer">
+						<div  class="form-group col-md-4 equipment_stops_date_time_container">
+							<label for="spare-part-quantity">@lang('equicare.SPARE_NO')  </label>
+							<input type="text" class="form-control" placeholder="Input 1" name="SPARE_NO"  id="input1_1">
 
+							{{-- {!! Form::text('SPARE_NO', null, ['class' => 'form-control', 'id' => 'spare-part-quantity']) !!} --}}
+						  </div>
+				
+					  <div class="form-group col-md-4 equipment_stops_date_time_container">
+						<label for="spare-part-name">  @lang('equicare.Spare Part Name') </label>
+						<input type="text" class="form-control" placeholder="Input 2" name="spare_name "  id="input1_2">
+
+						{{-- {!! Form::text('spare_name', null, ['class' => 'form-control', 'id' => 'spare-part-name']) !!} --}}
+					  </div>
+					  <div class="form-group col-md-4 equipment_stops_date_time_container">
+						<label for="spare-part-quantity">@lang('equicare.Quantity')  </label>
+						<input type="text" class="form-control" placeholder="Input 3" name="quantity"  id="input1_3">
+
+						{{-- {!! Form::text('quantity', null, ['class' => 'form-control', 'id' => 'spare-part-quantity']) !!} --}}
+					  </div>
+					  <div class="form-group col-md-4 equipment_stops_date_time_container">
+						<label for="spare-part-type">@lang('equicare.Type_SPARE') </label>
+						{{-- {!! Form::text('type_sp', null, ['class' => 'form-control', 'id' => 'spare-part-type']) !!} --}}
+						<input type="text" class="form-control" placeholder="Input 4" name="type_sp"  id="input1_4">
+
+
+					  </div>
+					  <div class="col-md-12" id="fa-fa-plus-id">
+						<button type="button" class="pull-right btn btn-primary " onclick="addInputFields()"><i
+								class="fa fa-plus" id="add-button"></i> @lang('equicare.add_more_equipments')</button>
+						<button type="button"onclick="delteInputFields()"
+							class="pull-right btn btn-danger btn-sm "><i
+								class="fa fa-close"></i> @lang('equicare.delete_line')</button>
+					</div>
+
+						</div>
+						{{-- <input type="submit" value="@lang('equicare.submit')" class="btn btn-primary btn-flat " onclick="addInputFields()"> --}}
+	
+					</div>
+					{{-- <div class="modal-footer">
+					  <button type="button" class="bttn-secondary" n bdata-dismiss="modal">Close</button>
+					  <input type="submit" value="@lang('equicare.submit')"  class="btn btn-primary" id="save-spare-part">
+					</div> --}}
+				  </div>
+				</div>
+				{{-- <div id="inputContainer">
+					<div class="form-group col-md-4">
+						<input type="text" class="form-control" placeholder="Input 1" name="SPARE_NO">
+	
+					</div>
+					<div class="form-group col-md-4">
+						<input type="text" class="form-control" placeholder="Input 2" name="spare_name">
+	
+					</div>
+	
+					<div class="form-group col-md-4">
+						<input type="text" class="form-control" placeholder="Input 3" name="quantity">
+	
+					</div>
+	
+					<div class="form-group col-md-4">
+						<input type="text" class="form-control" placeholder="Input 4" name="type_sp">
+	
+					</div> --}}
+	
+	
 						{{-- <div class="form-group col-md-4">
 							<label>@lang('equicare.reasons stopping')</label>
 							{!! Form::textarea('reasons_stopping',null,['rows' => 2, 'class' => 'form-control']) !!}
@@ -265,63 +300,8 @@
 					</div>
 			</div>
 			</form>
-			{{-- <div class="form-group col-md-4 ">
-				<label>@lang('equicare.reasons stopping')</label>
-				{!! Form::text('name', null, ['rows' => 2, 'class' => 'form-control']) !!}
-			</div> 
 
-			<div class="form-group col-md-4 ">
-				<label>@lang('equicare.reasons stopping')</label>
-				{!! Form::text('quantity', null, ['rows' => 2, 'class' => 'form-control']) !!}
-			</div>
-
-			<div class="form-group col-md-4 ">
-				<label>@lang('equicare.reasons stopping')</label>
-				{!! Form::text('type_sp', null, ['rows' => 2, 'class' => 'form-control']) !!}
-			</div>
- --}}
-<!-- HTML -->
-<form class="form" method="post" action="{{ route('sparte_parts_scan') }}">
-	{{ csrf_field() }}
-	{{ method_field('POST') }}
-
-<div class="modal fade" id="spare-part-modal" tabindex="-1" role="dialog" aria-labelledby="spare-part-modal-label" aria-hidden="true">
-	<div class="modal-dialog" role="document">
-	  <div class="modal-content">
-		<div class="modal-header">
-		  <h5 class="modal-title" id="spare-part-modal-label"> @lang('equicare.Spare Part Details<')<z/h5>
-		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-			<span aria-hidden="true">&times;</span>
-		  </button>
-		</div>
-		<div class="modal-body">
-			<div class="form-group">
-				<label for="spare-part-quantity">@lang('equicare.SPARE_NO')  </label>
-				{!! Form::text('SPARE_NO', null, ['class' => 'form-control', 'id' => 'spare-part-quantity']) !!}
 			  </div>
-	
-		  <div class="form-group">
-			<label for="spare-part-name">  @lang('equicare.Spare Part Name') </label>
-			{!! Form::text('name', null, ['class' => 'form-control', 'id' => 'spare-part-name']) !!}
-		  </div>
-		  <div class="form-group">
-			<label for="spare-part-quantity">@lang('equicare.Quantity')  </label>
-			{!! Form::text('quantity', null, ['class' => 'form-control', 'id' => 'spare-part-quantity']) !!}
-		  </div>
-		  <div class="form-group">
-			<label for="spare-part-type">@lang('equicare.Type_SPARE') </label>
-			{!! Form::text('type_sp', null, ['class' => 'form-control', 'id' => 'spare-part-type']) !!}
-		  </div>
-		</div>
-		<div class="modal-footer">
-		  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-		  <input type="submit" value="@lang('equicare.submit')"  class="btn btn-primary" id="save-spare-part">
-		</div>
-	  </div>
-	</div>
-  </div>
-</form>
-
 		</div>
 	</div>
 </div>
@@ -335,6 +315,103 @@
 @section('scripts')
 <script src="{{ asset('assets/js/datetimepicker.js') }}" type="text/javascript"></script>
 <script type="text/javascript">
+// let inputCount = 1;
+
+// function addInputFields() {
+//   const container = document.getElementById("inputContainer");
+
+//   const newInput1 = document.createElement("input");
+//   newInput1.type = "text";
+//   newInput1.placeholder = "Input 1";
+//   newInput1.name = `input${inputCount}_1`;
+
+//   const newInput2 = document.createElement("input");
+//   newInput2.type = "text";
+//   newInput2.placeholder = "Input 2";
+//   newInput2.name = `input${inputCount}_2`;
+
+//   const newInput3 = document.createElement("input");
+//   newInput3.type = "text";
+//   newInput3.placeholder = "Input 3";
+//   newInput3.name = `input${inputCount}_3`;
+
+//   const newInput4 = document.createElement("input");
+//   newInput4.type = "text";
+//   newInput4.placeholder = "Input 4";
+//   newInput4.name = `input${inputCount}_4`;
+
+//   const removeButton = document.createElement("button");
+//   removeButton.textContent = "Delete";
+//   removeButton.onclick = function() {
+// 	container.removeChild(this.parentNode);
+//   };
+
+//   const newDiv = document.createElement("div");
+//   newDiv.appendChild(newInput1);
+//   newDiv.appendChild(newInput2);
+//   newDiv.appendChild(newInput3);
+//   newDiv.appendChild(newInput4);
+//   newDiv.appendChild(removeButton);
+
+//   container.appendChild(newDiv);
+
+//   inputCount++;
+// }
+let inputCount = 1;
+
+function addInputFields() {
+  const container = document.getElementById("inputContainer");
+
+  const newInput1 = document.createElement("input");
+  newInput1.type = "text";
+  newInput1.placeholder = "Input 1";
+  newInput1.id = `input${inputCount}_1`;
+  newInput1.name = "SPARE_NO[]";
+  newInput1.class="form-control";
+
+
+  const newInput2 = document.createElement("input");
+  newInput2.type = "text";
+  newInput2.placeholder = "Input 2";
+  newInput2.id = `input${inputCount}_2`;
+  newInput2.name = "spare_name[]";
+  newInput2.class="form-control";
+
+
+  const newInput3 = document.createElement("input");
+  newInput3.type = "text";
+  newInput3.placeholder = "Input 3";
+  newInput3.id = `input${inputCount}_3`;
+  newInput3.name = "quantity[]";
+  newInput3.class="form-control";
+
+
+  const newInput4 = document.createElement("input");
+  newInput4.type = "text";
+  newInput4.placeholder = "Input 4";
+  newInput4.id = `input${inputCount}_4`;
+  newInput4.name = "type_sp[]";
+  newInput4.class="form-control";
+
+
+  const removeButton = document.createElement("button");
+   removeButton.textContent = "Delete";
+   function delteInputFields() {
+	container.removeChild(this.parentNode);
+  };
+
+  const newDiv = document.createElement("div");
+  newDiv. class="form-group col-md-4 equipment_stops_date_time_container";
+  newDiv.appendChild(newInput1);
+  newDiv.appendChild(newInput2);
+  newDiv.appendChild(newInput3);
+  newDiv.appendChild(newInput4);
+  newDiv.appendChild(removeButton);
+
+  container.appendChild(newDiv);
+
+  inputCount++;
+}
 // Assuming you have a jQuery library available
 $(document).ready(function() {
     $('#assess_equipment').change(function() {
@@ -407,6 +484,21 @@ document.getElementById('save-spare-part').addEventListener('click', () => {
 				placeholder: '{{__("equicare.select_option")}}',
 				allowClear: true
 			});
+			$('.governorate_id_select2').select2({
+				placeholder: '{{__("equicare.select_option")}}',
+				allowClear: true
+			});
+
+			$('.directorate_id_select2').select2({
+				placeholder: '{{__("equicare.select_option")}}',
+				allowClear: true
+			});
+
+			$('.type_of_healthfacility_id_select2').select2({
+				placeholder: '{{__("equicare.select_option")}}',
+				allowClear: true
+			});
+
 
 		    if($('#external').attr('checked') =='checked'){
 		    		$('.report_no').css('display','block');
@@ -459,6 +551,9 @@ document.getElementById('save-spare-part').addEventListener('click', () => {
 		var name_donors=$('.name_donors');
 		var phone_donors=$('.phone_donors');
 		var provenance=$('.provenance');
+		var	governorate=$('.governorate')
+		var	directorate=$('.directorate')
+		var	type_of_healthfacilityS=$('.type_of_healthfacilityS')
 
 		var department = $('.department_select2');
 		if(value==""){
@@ -472,7 +567,10 @@ document.getElementById('save-spare-part').addEventListener('click', () => {
 			name_donors.val("");
 			phone_donors.val("");
 			provenance.val("");
+			governorate.val("");
+			directorate.val("");
 
+			type_of_healthfacilityS.val("");
 		}
 		if(value !=""){
 			$.ajax({
@@ -490,6 +588,10 @@ document.getElementById('save-spare-part').addEventListener('click', () => {
 			    		department.val(data.success.department);
 						production_date.val(data.success.production_date);
 						provenance.val(data.success.provenance);
+						governorate.val(data.success.governorate);
+						directorate.val(data.success.directorate);
+						type_of_healthfacilityS.val(data.success.type_of_healthfacilityS);
+
 
 						Donor.val(data.success.Donor);
 						name_donors.val(data.success.name_donors);

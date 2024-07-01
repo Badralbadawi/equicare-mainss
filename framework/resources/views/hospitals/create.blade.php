@@ -29,19 +29,50 @@
 							<input type="text" name="name" class="form-control"
 							value="{{ old('name') }}" />
 						</div>
-						<div class="form-group col-md-6">
+						{{-- <div class="form-group col-md-6">
 							<label for="governorate"> @lang('equicare.Governorate') </label>
 							{!! Form::select('governorate',$governorates??[],null,['class'=>'form-control','placeholder'=>'--select--']) !!}
 						</div>
 						<div class="form-group col-md-6">
 							<label for="directorate"> @lang('equicare.directorate') </label>
-							{!! Form::select('directorate',$directorates??[],null,['class'=>'form-control','placeholder'=>'--select--']) !!}
-						</div>
-						<div class="form-group col-md-6">
-							<label for="type_of_healthfcility"> @lang('equicare.type_of_healthfcility') </label>
+							{{-- {!! Form::select('directorate',$directorates as  $id->  $name,null,['class'=>'form-control','placeholder'=>'--select--']) !!} --}}
+							{{-- {!! Form::select('directorate', array_pluck($directorates, 'name'), null, ['class' => 'form-control', 'placeholder' => '--select--']) !!}
+						</div>  --}}
+						{{-- <div class="form-group col-md-6">
+							<label for="type_of_healthfcility"> </label>
 							{!! Form::select('type_of_healthfacilityS',$type_of_healthfacilityS??[],null,['class'=>'form-control','placeholder'=>'--select--']) !!}
 						</div>
-	
+	 --}}
+	 <div class="form-group col-md-6">
+		<label for="type_of_healthfacility"> @lang('equicare.Governorate')</label>
+		<select name="governorate" id="governorate" class="form-control" placeholder='--select--' required>
+			<option value="">-select--</option>
+			@foreach ($governorates as $id => $name)
+				<option value="{{ $name }}">{{ $name }}</option>
+			@endforeach
+		</select>
+	</div>
+
+	 <div class="form-group col-md-6">
+		<label for="type_of_healthfacility"> @lang('equicare.directorate')</label>
+		<select name="directorate" id="type_of_healthfacility" class="form-control" placeholder='--select--' required>
+			<option value="">-select--</option>
+			@foreach ($directorates as $id => $name)
+				<option value="{{ $name }}">{{ $name }}</option>
+			@endforeach
+		</select>
+	</div>
+
+	 <div class="form-group col-md-6">
+		<label for="type_of_healthfacility"> @lang('equicare.type_of_healthfcility')</label>
+		<select name="type_of_healthfacilityS" id="type_of_healthfacility" class="form-control" placeholder='--select--' required>
+			<option value="">-select--</option>
+			@foreach ($type_of_healthfacilityS as $id => $name)
+				<option value="{{ $name }}">{{ $name }}</option>
+			@endforeach
+		</select>
+	</div>
+
 						{{-- <div class="form-group col-md-6">
 							<label for="governorate"> @lang('equicare.Governorate') </label>
 							<input type="text" name="governorate" class="form-control"

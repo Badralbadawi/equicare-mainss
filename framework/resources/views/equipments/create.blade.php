@@ -22,13 +22,26 @@
 							{{ csrf_field() }}
 							{{ method_field('POST') }}
 							<div class="row">
-															<div class="form-group col-md-6">
+								{{-- <div class="form-group col-md-6">
+									<label for="governorate"> @lang('equicare.Governorate') </label>
+									{!! Form::select('governorate',$governorates??[],'governorate',['class'=>'form-control ','placeholder'=>'--select--']) !!}
+								</div>
+								<div class="form-group col-md-6">
+									<label for="directorate"> @lang('equicare.directorate') </label>
+									{!! Form::select('directorates',$directorates??[],null,['class'=>'form-control ','placeholder'=>'--select--']) !!}
+								</div>
+								<div class="form-group col-md-6">
+									<label for="type_of_healthfcility"> @lang('equicare.type_of_healthfcility') </label>
+									{!! Form::select('type_of_healthfacilityS',$type_of_healthfacilityS??[],null,['class'=>'form-control','placeholder'=>'--select--']) !!}
+								</div> --}}
+			
+															{{-- <div class="form-group col-md-6">
 								<label for="hospital_id"> @lang('equicare.Governorate') </label>
-								<select name="hospital_id" class="form-control">
+								<select name="governorate" class="form-control">
 									<option value="">---select---</option>
 									@if(isset($hospitals))
 										@foreach ($hospitals as $hospital)
-											<option value="{{ $hospital->id }}"
+											<option value="{{ $hospital->governorate }}"
 												{{ old('hospital_id')?'selected':'' }}
 												>{{ $hospital->governorate }}
 											</option>
@@ -38,7 +51,7 @@
 							</div>
 							<div class="form-group col-md-6">
 								<label for="hospital_id"> @lang('equicare.directorate') </label>
-								<select name="hospital_id" class="form-control">
+								<select name="directorate" class="form-control">
 									<option value="">---select---</option>
 									@if(isset($hospitals))
 										@foreach ($hospitals as $hospital)
@@ -53,19 +66,48 @@
 
 							<div class="form-group col-md-6">
 								<label for="hospital_id"> @lang('equicare.type_of_healthfacility') </label>
-								<select name="hospital_id" class="form-control">
+								<select name="type_of_healthfcilityS" class="form-control">
 									<option value="">---select---</option>
 									@if(isset($hospitals))
 										@foreach ($hospitals as $hospital)
 											<option value="{{ $hospital->id }}"
-												{{ old('type_of_healthfacility')?'selected':'' }}
-												>{{ $hospital->type_of_healthfacilityS }}
+												{{ old('type_of_healthfcilityS')?'selected':'' }}
+												>{{ $hospital->type_of_healthfcilityS }}
 											</option>
 										@endforeach
 									@endif
 								</select>
+							</div>  --}}
+							<div class="form-group col-md-6">
+								<label for="type_of_healthfacility"> @lang('equicare.Governorate')</label>
+								<select name="governorate" id="governorate" class="form-control" placeholder='--select--' required>
+									<option value="">-select--</option>
+									@foreach ($governorates as $id => $name)
+										<option value="{{ $name }}">{{ $name }}</option>
+									@endforeach
+								</select>
 							</div>
-
+						
+							 <div class="form-group col-md-6">
+								<label for="type_of_healthfacility"> @lang('equicare.directorate')</label>
+								<select name="directorate" id="type_of_healthfacility" class="form-control" placeholder='--select--' required>
+									<option value="">-select--</option>
+									@foreach ($directorates as $id => $name)
+										<option value="{{ $name }}">{{ $name }}</option>
+									@endforeach
+								</select>
+							</div>
+						
+							 <div class="form-group col-md-6">
+								<label for="type_of_healthfacility"> @lang('equicare.type_of_healthfcility')</label>
+								<select name="type_of_healthfacilityS" id="type_of_healthfacility" class="form-control" placeholder='--select--' required>
+									<option value="">-select--</option>
+									@foreach ($type_of_healthfacilityS as $id => $name)
+										<option value="{{ $name }}">{{ $name }}</option>
+									@endforeach
+								</select>
+							</div>
+						
 							<div class="form-group col-md-6">
 								<label for="hospital_id"> @lang('equicare.hospital') </label>
 								<select name="hospital_id" class="form-control">

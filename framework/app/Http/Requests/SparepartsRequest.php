@@ -12,7 +12,7 @@ class SparepartsRequest extends FormRequest {
 
 	public function rules() {
 			return [
-				'name' => 'required',
+				'spare_name' => 'required',
 				'SPARE_NO' => 'required',
 				'quantity' => 'required',
 				'type_sp' => 'required',

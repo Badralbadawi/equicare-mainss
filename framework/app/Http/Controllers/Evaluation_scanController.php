@@ -22,7 +22,7 @@ use Maatwebsite\Excel\Concerns\FromView;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Illuminate\Contracts\View\View;
 use App\Directorate;
-use App\SparePart;
+use App\Sparepart;
 use App\Type_of_healthfacility;
 
 use Excel;
@@ -111,7 +111,7 @@ class Evaluation_scanController extends Controller {
 		$evaluation->equip_id = $request->equip_id;
 		$evaluation->user_id = Auth::id();
 		$sparePart= new SparePart;
-		$sparePart->name = $request->name;
+		$sparePart->spare_name = $request->spare_name;
 		$sparePart->quantity = $request->quantity;
 		$sparePart->type_sp = $request->type_sp;
 		$sparePart->SPARE_NO = $request->SPARE_NO;
@@ -132,11 +132,16 @@ class Evaluation_scanController extends Controller {
 		// 	$evaluation_scan_date_time = !empty($request->evaluation_scan_date_time) ? date('Y-m-d', strtotime($request->evaluation_scan_date_time)) : null;
 		// 	$evaluation->evaluation_scan_date_time = $evaluation_scan_date_time;
 		// }
+		$evaluation->governorate = $request->governorate;
+        $evaluation->directorate = $request->directorate;
+        //  $evaluation->type_of_healthfacilityS = $request->type_of_healthfacilityS;
+
 		$evaluation->working_status = $request->working_status;
 		$evaluation->reasons_stopping = $request->reasons_stopping;
 		$evaluation->assess_equipment = $request->assess_equipment;
 		$evaluation->is_contamination = $request->is_contamination;
 		$evaluation->save();
+		$sparePart->save();
 		return redirect('admin/evaluation_scans')->with('flash_message', 'Evaluation scans Entry created');
 	}
 
@@ -246,7 +251,7 @@ class Evaluation_scanController extends Controller {
 	}
 	// use App\Http\Illuminate\Support\Facades\Facade;
 	public function sparte(SparepartsRequest $request) {
-		$sparePart= new SparePart;
+		$sparePart= new Sparepart;
 		// $sparePart = SparePart::findOrFail($request->b_id);
 		// $validator = Validator::make($request->all(), [
 			// 'call_attend_date_time' => 'required|after_or_equal:'.$preventive->call_register_date_time,

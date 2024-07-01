@@ -147,6 +147,9 @@ class EquipmentController extends Controller
         $equipment->Donor = $request->Donor;
         $equipment->phone_donors = $request->phone_donors;
         $equipment->name_donors = $request->name_donors;
+        $equipment->governorate = $request->governorate;
+        $equipment->directorate = $request->directorate;
+        //  $equipment->type_of_healthfacilityS = $request->type_of_healthfacilityS;
 
         
         
@@ -186,8 +189,8 @@ class EquipmentController extends Controller
         $hospital = Hospital::where('id', $request->hospital_id)->first();
         if ($hospital != "") 
         {
-            $unique_id = $hospital->slug . '/' . $equipment->department . '/' . $equipment->short_name . '/' . $equipment_number.'/'.$hospital->governorate.'/'.$hospital->directorate.'/'.$hospital->type_of_healthfacilityS;
-			$label_name=$hospital->slug . '/' . $equipment->department . '/' . $equipment->short_name . '/'.$hospital->governorate.'/'.$hospital->directorate.'/'.$hospital->type_of_healthfacilityS;
+            $unique_id = $hospital->slug . '/' . $equipment->department . '/' . $equipment->short_name . '/' . $equipment_number.'/'.$equipment->governorate.'/'.$equipment->directorate.'/'.$equipment->type_of_healthfacilityS;
+			$label_name=$hospital->slug . '/' . $equipment->department . '/' . $equipment->short_name . '/'.$equipment->governorate.'/'.$equipment->directorate.'/'.$equipment->type_of_healthfacilityS;
 			$equipment_last = Equipment::where('unique_id', 'like', $label_name.'%')->orderBy('unique_id', 'desc')->first();
 			if($equipment_last){
 				$last_label_no=explode('/',$equipment_last->unique_id);
