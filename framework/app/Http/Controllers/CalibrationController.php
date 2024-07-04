@@ -7,6 +7,7 @@ use App\Department;
 use App\Equipment;
 use App\Hospital;
 use App\Http\Requests\CalibrationRequest;
+use Illuminate\Http\Request;
 use App\User;
 use Auth;
 
@@ -19,7 +20,6 @@ class CalibrationController extends Controller {
 		$index['users'] = User::pluck('name', 'id');
 		return view('calibrations.index', $index);
 	}
-
 	public function create() {
 		$this->availibility('Create Calibrations');
 		$index['page'] = 'calibrations';
@@ -28,6 +28,37 @@ class CalibrationController extends Controller {
 		$index['hospitals'] = Hospital::query()->Hospital()->pluck('name', 'id')->toArray();
 		return view('calibrations.create', $index);
 	}
+	public function createCalibrationRequest(Request $request)
+{
+    // Get the equipment details
+    $equipment = Equipment::findOrFail($request->equipment_id);
+
+    // Calculate the next maintenance date based on the user-entered interval
+    $nextMaintenanceDate = Carbon::parse($equipment->next_maintenance_date)->addDays($equipment->maintenance_interval);
+
+    // Create a new calibration request
+    $calibration = new Calibration();
+    $calibration->date_of_calibration = now();
+    $calibration->due_date = $nextMaintenanceDate;
+    $calibration->equip_id = $equipment->id;
+    $calibration->user_id = auth()->id();
+    $calibration->certificate_no = $request->certificate_no;
+    $calibration->company = $request->company;
+    $calibration->contact_person = $request->contact_person;
+    $calibration->contact_person_no = $request->contact_person_no;
+    $calibration->engineer_no = $request->engineer_no;
+    $calibration->traceability_certificate_no = $request->traceability_certificate_no;
+
+    if ($request->hasFile('calibration_certificate')) {
+        $imageName = time() . '.' . $request->calibration_certificate->getClientOriginalExtension();
+        $request->calibration_certificate->move('uploads/certificates/', $imageName);
+        $calibration->calibration_certificate = 'uploads/certificates/' . $imageName;
+    }
+
+    $calibration->save();
+
+    return redirect('admin/calibration')->with('flash_message', 'Calibration request created');
+}
 
 	public function store(CalibrationRequest $request) {
 		
@@ -49,8 +80,8 @@ class CalibrationController extends Controller {
       $calibration->calibration_certificate = 'uploads/certificates/' . $imageName;
 		}
 		$calibration->save();
-
-		return redirect('admin/calibration')->with('flash_message', 'Calibration created');
+			return $this->createCalibrationRequest($request);
+		// return redirect('admin/calibration')->with('flash_message', 'Calibration created');
 	}
 
 	public function edit($id) {

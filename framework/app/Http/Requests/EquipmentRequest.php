@@ -34,10 +34,11 @@ class EquipmentRequest extends FormRequest {
 			'date_of_purchase' => 'required',
 			'provenance'=> 'required',
 			'Donor'=> 'required',
-			'CATALOGUE'=> 'required',
 			'governorate'=> 'required',
 			'directorate'=> 'required',
-			// 'typeof_healthfcilityS'=> 'required',
+			// 'CATALOGUE' => 'nullable|mimes:jpg,jpeg,png,pdf,doc,docx|max:10240',
+
+			// 'type_of_healthfcilityS'=> 'required',
 	
 			// 'phone_donors'=> 'required',
 			// 'name_donors'=> 'required',
@@ -48,8 +49,11 @@ class EquipmentRequest extends FormRequest {
 			'date_of_installation' => "after_or_equal:date_of_purchase|date_format:$dateFormat",
 			'warranty_due_date' => "after_or_equal:date_of_purchase|date_format:$dateFormat",
 			'production_date' => "after_or_equal:date_of_purchase|date_format:$dateFormat",
-
 			'service_engineer_no' => 'required|numeric',
+			'model_number'=> 'required|numeric',
+			'Location'=> 'required',
+			'Manufacturer'=> 'required',
+
 		];
 	}
 	public function messages() {

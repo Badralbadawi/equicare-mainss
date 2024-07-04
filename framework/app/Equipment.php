@@ -14,6 +14,7 @@ class Equipment extends Model {
 		'sr_no', 'unique_id', 'department', 'order_date', 'date_of_purchase'
 		, 'date_of_installation', 'warranty_due_date','production_date','provenance', 'service_engineer_no','CATALOGUE','Donor',
  'is_critical', 'notes','qr_id','name_donors','name_donors','phone_donors','governorate','directorate','type_of_healthfcilityS',
+ 'Manufacturer','Location','model_number',
 	];
 
 	public function hospital() {
@@ -51,4 +52,7 @@ class Equipment extends Model {
 			$query->whereIn('hospital_id', auth()->user()->hospitals->pluck('id')->toArray());
 	}
 	
+	public function Tests_equp() {
+		return $this->hasOne('App\Tests_equp', 'equip_id', 'id');
+	}
 }

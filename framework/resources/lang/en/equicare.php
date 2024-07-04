@@ -325,6 +325,13 @@ return [
 'Type_SPARE'=> 'نوع القطع',
 'SPARE_NO'=> 'رقم القطعة',
 'Spare Part Details<'=> 'تفاصيل اضافة قطع غيار',
+'next_maintenance_date'=> 'فترة الصيانة الدورية و المعايرة ',
+'model_number'=> 'رقم الموديل',
+'Location'=> 'الموقع',
+'Manufacturer'=> 'المصنع',
+
+
+
 
 
 

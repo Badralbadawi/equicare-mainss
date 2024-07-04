@@ -17,6 +17,7 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('reminder:emailsend')->hourly();
            $schedule->command('migrate:fresh-seed')->daily();
+           $schedule->command('equipment:update-maintenance-date')->monthly();
     }
 
     /**
@@ -24,6 +25,7 @@ class Kernel extends ConsoleKernel
      *
      * @return void
      */
+    
     protected function commands()
     {
         $this->load(__DIR__.'/Commands');

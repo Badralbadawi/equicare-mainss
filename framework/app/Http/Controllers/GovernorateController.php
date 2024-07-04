@@ -5,7 +5,8 @@ use App\Governorate;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\GovernorateRequest;
-
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Reader\Xlsx;
 class GovernorateController extends Controller
 {
     /**
@@ -13,12 +14,49 @@ class GovernorateController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+
     public function index() {
 		$this->availibility('View Governorates');
 		$data['page'] = 'governorates';
 		$data['governorates'] = Governorate::all();
 		return view('governorates.index', $data);
 	}
+
+
+	public function importExcel(Request $request)
+    {
+        $request->validate([
+            'excel_file' => 'required|file|mimes:xls,xlsx',
+        ]);
+
+        $file = $request->file('excel_file');
+        $reader = new Xlsx();
+        $spreadsheet = $reader->load($file->getPathname());
+        $worksheet = $spreadsheet->getActiveSheet();
+
+        $data = [];
+        foreach ($worksheet->getRowIterator(2) as $row) {
+            $cellIterator = $row->getCellIterator();
+            $cellIterator->setIterateOnlyExistingCells(true);
+            $rowData = [];
+            foreach ($cellIterator as $cell) {
+                $rowData[] = $cell->getValue();
+            }
+            $data[] = $rowData;
+        }
+
+        // Process the $data array and save it to the database
+        foreach ($data as $row) {
+            Governorate::create([
+                'name' => $row[0],
+                'short_name' => $row[1],
+            ]);
+        }
+
+        return redirect()->back()->with('success', 'Excel file imported successfully.');
+    }
 	public static function availibility($method)
     {
 

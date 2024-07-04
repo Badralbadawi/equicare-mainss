@@ -6,7 +6,7 @@ use App\Governorate;
 use App\Http\Requests\DirectorateRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use App\Imports\DirectorateImport;
 class DirectorateController extends Controller
 {
   /**
@@ -20,6 +20,19 @@ class DirectorateController extends Controller
 		$data['directorates'] = Directorate::all();
 		return view('directorates.index', $data);
 	}
+	public function importFromExcel(Request $request)
+    {
+        $request->validate([
+            'excel_file' => 'required|file|mimes:xlsx,xls',
+        ]);
+
+        $import = new DirectorateImport();
+        $import->import($request->file('excel_file'));
+
+        // Add any additional logic, like redirecting or returning a success message
+        return redirect()->back()->with('success', 'Directorates imported successfully!');
+    }
+
 	public static function availibility($method)
     {
 

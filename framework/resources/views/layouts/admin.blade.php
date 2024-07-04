@@ -220,6 +220,12 @@
             <i class="fa fa-stethoscope"></i> <span>@lang('equicare.manage_Equipment')</span>
           </a>
         </li>
+        <li class="{{ $page=='test_and_calibrations'?'active':'' }}">
+          <a href="{{ url('admin/test_and_calibrations') }}">
+            <i class="fa fa-balance-scale"></i> <span>@lang('equicare.test_and_calibrations')</span>
+          </a>
+        </li>
+
 
 
         

@@ -100,6 +100,12 @@ class Tableseeder extends Seeder {
 			'Create ٍSpareparts',
 			'Edit ٍSpareparts',
 			'Delete ٍSpareparts',
+			'View Test_and_calibrations',
+			'Create Test_and_calibrations',
+			'Edit Test_and_calibrations',
+			'Delete Test_and_calibrations',
+
+
 
 
 

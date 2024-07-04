@@ -21,6 +21,7 @@ use App\Http\Controllers\QrScanController;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\GovernorateController;
 use App\Http\Controllers\DirectorateController;
+use App\Http\Controllers\TestCalibrationsController;
 
 use App\Http\Controllers\Type_of_healthfacility_Controllers;
 use App\Http\Controllers\Evaluation_scanController;
@@ -153,7 +154,12 @@ Route::group(['middleware' => ['installed_or_not', 'auth']], function () {
 
     // Route::view('admin/Directorates' ,'index');
   // في ملف web.php
+  Route::resource('admin/test_and_calibrations', TestCalibrationsController::class);
+
         Route::view('admin/Directorates','Directorates.index');
         Route::resource('/admin/type_of_healthfacility', Type_of_healthfacility_Controllers::class);
         Route::resource('/admin/evaluation_scans', Evaluation_scanController::class);
+        Route::post('/import-excel', [GovernorateController::class, 'importExcel'])->name('import-excel');
+        Route::post('/directorates/import', [DirectorateController::class, 'importFromExcel'])->name('directorates.import');
+        
 });

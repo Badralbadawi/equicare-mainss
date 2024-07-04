@@ -72,6 +72,7 @@
 						{!! Form::label('due_date',__('equicare.due_date')) !!}
 						{!! Form::text('due_date',null,['class' => 'due_date form-control']) !!}
 					</div>
+
 					<div class="form-group col-md-4">
 						{!! Form::label('certificate_no',__('equicare.certificate_no')) !!}
 						{!! Form::text('certificate_no',null,['class' => 'form-control']) !!}

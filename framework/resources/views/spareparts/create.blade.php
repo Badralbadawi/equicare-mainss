@@ -29,16 +29,34 @@
 					@include ('errors.list')
 						{!! Form::open(['url'=>'admin/departments','method'=>'POST']) !!}
 						<div class="row">
-							<div class="form-group col-md-6">
-								{!! Form::label('name',__('equicare.name')) !!}
-								{!! Form::text('name',null,['class' => 'form-control']) !!}
-							</div>
-							<div class="form-group col-md-6">
-								{!! Form::label('short_name',__('equicare.short_name_e')) !!}
-								{!! Form::text('short_name',null,['class' => 'form-control']) !!}
-							</div>
-
-							<div class="form-group col-md-12">
+							<div id="inputContainer">
+								<div  class="form-group col-md-4 equipment_stops_date_time_container">
+									<label for="spare-part-quantity">@lang('equicare.SPARE_NO')  </label>
+									{{-- <input type="text" class="form-control" placeholder="Input 1" name="SPARE_NO"  > --}}
+		
+									{!! Form::text('SPARE_NO[]', null, ['class' => 'form-control', 'id' => 'spare-part-quantity']) !!}
+								  </div>
+						
+							  <div class="form-group col-md-4 equipment_stops_date_time_container">
+								<label for="spare-part-name">  @lang('equicare.Spare Part Name') </label>
+								{{-- <input type="text" class="form-control" placeholder="Input 2" name="spare_name "  > --}}
+		
+								{!! Form::text('spare_name[]', null, ['class' => 'form-control', 'id' => 'spare-part-name']) !!}
+							  </div>
+							  <div class="form-group col-md-4 equipment_stops_date_time_container">
+								<label for="spare-part-quantity">@lang('equicare.Quantity')  </label>
+								{{-- <input type="text" class="form-control" placeholder="Input 3" name="quantity"  > --}}
+		
+								{!! Form::text('quantity[]', null, ['class' => 'form-control', 'id' => 'spare-part-quantity']) !!}
+							  </div>
+							  <div class="form-group col-md-4 equipment_stops_date_time_container">
+								<label for="spare-part-type">@lang('equicare.Type_SPARE') </label>
+								{!! Form::text('type_sp[]', null, ['class' => 'form-control', 'id' => 'spare-part-type']) !!}
+								{{-- <input type="text" class="form-control" placeholder="Input 4" name="type_sp"  > --}}
+		
+		
+							  </div>
+									<div class="form-group col-md-12">
 								{!! Form::submit(__('equicare.submit'),['class' => 'btn btn-primary btn-flat']) !!}
 							</div>
 						</div>

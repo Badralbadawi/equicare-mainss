@@ -20,6 +20,16 @@
 								<a href="{{ route('governorates.create') }}" class="btn btn-primary btn-flat">@lang('equicare.add_new')</a>
 							@endif
 						</h4>
+						<div class="box-tools pull-right">
+							<form action="{{ route('import-excel') }}" method="POST" enctype="multipart/form-data">
+								@csrf
+								<div class="input-group input-group-sm" style="width: 250px;">
+									<input type="file" name="excel_file" class="form-control pull-right" required>
+									<div class="input-group-btn">
+										<button type="submit" class="btn btn-default"><i class="fa fa-upload"></i> @lang('equicare.import')</button>
+									</div>
+								</div>
+							</form>
 					</div>
 					<div class="box-body table-responsive">
 						<table class="table table-bordered table-hover dataTable bottom-padding" id="data_table">

@@ -26,13 +26,15 @@ return new class extends Migration
             $table->timestamp('evaluation_scan_date_time')->nullable();//تاريخ تقييم المعدات 
 			$table->timestamp('equipment_stops_date_time')->nullable();//تاريخ توقف المعدات 
 			$table->string('working_status')->nullable();//حالة عمل  المعدات 
-			$table->text('remarks')->nullable(); // ملاحظات وتووصيات التقييم ملاحمم
+			$table->text('remarks')->nullable();
+			$table->integer('hospital')->nullable();
+			// ملاحظات وتووصيات التقييم ملاحمم
 			// $table->date('next_due_date')->nullable();
 			// $table->timestamp('call_complete_date_time')->nullable();
 			// $table->integer('user_attended')->nullable();
 			$table->string('directorate')->nullable();
 			$table->string('governorate')->nullable();
-			$table->string('type_of_healthfcilityS')->nullable();
+			// $table->string('type_of_healthfcilityS')->nullable();
  //who attended
 			// $table->string('service_rendered')->nullable();
 			// $table->text('nature_of_problem')->nullable();

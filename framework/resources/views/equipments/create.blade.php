@@ -198,6 +198,28 @@
 								<input type="text" name="model" class="form-control"
 								value="{{ old('model') }}" />
 							</div>
+
+							<div class="form-group col-md-6">
+								<label for="model_number"> @lang('equicare.model_number') </label>
+								<input type="text" name="model_number" class="form-control"
+								value="{{ old('sr_no') }}" />
+							</div>
+
+							<div class="form-group col-md-6">
+								<label for="Location"> @lang('equicare.Location') </label>
+								<input type="text" name="Location" class="form-control"
+								value="{{ old('Location') }}" />
+							</div>
+
+							<div class="form-group col-md-6">
+								<label for="Manufacturer"> @lang('equicare.Manufacturer') </label>
+								<input type="text" name="Manufacturer" class="form-control"
+								value="{{ old('Manufacturer') }}" />
+							</div>
+
+
+
+
 							<div class="form-group col-md-6">
 								<label for="sr_no"> @lang('equicare.serial_number') </label>
 								<input type="text" name="sr_no" class="form-control"
@@ -277,10 +299,78 @@
 								@lang('equicare.no')
 								</label>
 							</div>
-							
-							<div class="form-group col-md-6">
+							<table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th> FUNCTIONS</th>
+                    <th>ALARMS</th>
+                    <th> SAFETY</th>
+                    <th>QA/QC</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Status</th>
+                    <td>
+                        <select name="stage1_test1_status" class="form-control">
+                            <option value="pending">Pending</option>
+                            <option value="passed">Passed</option>
+                            <option value="failed">Failed</option>
+                        </select>
+                    </td>
+                    <td>
+						
+                        <select name="stage2_test1_status" class="form-control">
+                            <option value="pending">Pending</option>
+                            <option value="passed">Passed</option>
+                            <option value="failed">Failed</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select name="stage3_test1_status" class="form-control">
+                            <option value="pending">Pending</option>
+                            <option value="passed">Passed</option>
+                            <option value="failed">Failed</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select name="stage4_test1_status" class="form-control">
+                            <option value="pending">Pending</option>
+                            <option value="passed">Passed</option>
+                            <option value="failed">Failed</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>
+                        <textarea name="stage1_test2_description" class="form-control"></textarea>
+                    </td>
+                    <td>
+                        <textarea name="stage2_test2_description" class="form-control"></textarea>
+                    </td>
+                    <td>
+                        <textarea name="stage3_test2_description" class="form-control"></textarea>
+                    </td>
+                    <td>
+                        <textarea name="stage4_test2_description" class="form-control"></textarea>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+							{{-- <div class="form-group col-md-6">
 								{!! Form::label('CATALOGUE',__('equicare.CATALOGUE')) !!}
 								{!! Form::file('CATALOGUE',null,['class' => 'form-control']) !!}
+							</div> --}}
+							<div class="form-group col-md-4">
+								{!! Form::label('CATALOGUE',__('equicare.CATALOGUE')) !!}
+								<input type="file" class="form-control" name="CATALOGUE" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx">
+								{{-- {!! Form::file('CATALOGUE',null,['class' => 'form-control']) !!} --}}
+							</div>
+							<div class="form-group col-md-4">
+								{!! Form::label('next_maintenance_date',__('equicare.next_maintenance_date')) !!}
+								{!! Form::text('next_maintenance_date',null,['class' => 'due_date form-control']) !!}
 							</div>
 		
 

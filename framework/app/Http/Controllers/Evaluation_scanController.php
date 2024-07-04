@@ -111,10 +111,10 @@ class Evaluation_scanController extends Controller {
 		$evaluation->equip_id = $request->equip_id;
 		$evaluation->user_id = Auth::id();
 		$sparePart= new SparePart;
-		$sparePart->spare_name = $request->spare_name;
-		$sparePart->quantity = $request->quantity;
-		$sparePart->type_sp = $request->type_sp;
-		$sparePart->SPARE_NO = $request->SPARE_NO;
+		$sparePart->spare_name = json_encode( $request->spare_name);
+		$sparePart->quantity = json_encode ($request->quantity);
+		$sparePart->type_sp =  json_encode($request->type_sp);
+		$sparePart->SPARE_NO =  json_encode($request->SPARE_NO);
 
 
 

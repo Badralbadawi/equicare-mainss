@@ -12,8 +12,8 @@ class Governorate extends Model {
 
 	protected $fillable = ['name', 'short_name'];
 
-	// public function equipments() {
-	// 	return $this->hasMany('App\Equipment', 'department');
-	// }
+	public function Directorate() {
+		return $this->hasMany('App\Directorate', 'governorate');
+	}
  
 }

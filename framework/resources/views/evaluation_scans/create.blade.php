@@ -24,34 +24,6 @@
 				@include ('errors.list')
 				<div class="row">
 										
-					{{-- <div class="form-group col-md-4">
-						<label for="governorate"> @lang('equicare.Governorate') </label>
-						{!! Form::select('governorate',$governorate??[],null,['class'=>'form-control governorate_id_select2','placeholder'=>'--select--']) !!}
-					</div> --}}
-
-
-					{{-- <div class="form-group col-md-4">
-						<label for="directorate"> @lang('equicare.directorate') </label>
-						{!! Form::select('directorate',$directorate??[],null,['class'=>'form-control directorate_id_select2','placeholder'=>'--select--']) !!}
-					</div> --}}
-					{{-- <div class="form-group col-md-4">
-						<label for="type_of_healthfcility"> @lang('equicare.type_of_healthfcility') </label>
-						{!! Form::select('type_of_healthfacilityS',$type_of_healthfacilityS??[],null,['class'=>'form-control type_of_healthfacility_id_select2','placeholder'=>'--select--']) !!}
-					</div> --}}
-
-
-					{{-- <div class="form-group col-md-4">
-						<label for="department"> @lang('equicare.Governorate') </label>
-
-						{!! Form::select('Governorate',($Governorate->name)??[],null,['class'=>'form-control
-						hospital_select2','placeholder'=>'Select']) !!}
-					</div> --}}
-					{{-- <div class="form-group col-md-4">
-						<label for="department"> @lang('equicare.Directorates') </label>
-
-						{!! Form::select('hospital',($hospitals)??[],null,['class'=>'form-control
-						hospital_select2','placeholder'=>'Select']) !!}
-					</div> --}}
 					<div class="form-group col-md-4">
 						<label for="governorate"> @lang('equicare.Governorate') </label>
 						<input type="text" name="governorate" class=" governorate form-control" value="" disabled />
@@ -68,7 +40,8 @@
 				<input type="text" name="type_of_healthfacilityS" class=" type_of_healthfacilityS form-control" value="" disabled />
 			</div>
 
-					
+
+ 					
 					<div class="form-group col-md-4">
 						<label for="department"> @lang('equicare.hospital') </label>
 
@@ -132,7 +105,7 @@
 						<input type="text" name="phone_donors" id="phone_donors" class="phone_donors form-control" value="" disabled />
 					</div>
 
-					<div class="form-group col-md-4">
+					<div class="form-group col-md-4 ">
 						<label for="provenance"> @lang('equicare.provenance') </label>
 						<input type="text" name="provenance" class="provenance form-control" value="" disabled />
 					</div>
@@ -146,6 +119,22 @@
 					{{ csrf_field() }}
 					{{ method_field('POST') }}
 					<div class="row">
+						<div class="form-group col-md-4">
+							<label for="governorate"> @lang('equicare.Governorate') </label>
+							<input type="text" name="governorate" class=" governorate form-control" value=""  />
+						</div>
+	
+					
+					<div class="form-group col-md-4">
+						<label for="governorate"> @lang('equicare.directorate') </label>
+						<input type="text" name="directorate" class=" directorate form-control" value=""  />
+					</div>
+				
+				<div class="form-group col-md-4">
+					<label for="governorate"> @lang('equicare.type_of_healthfacility') </label>
+					<input type="text" name="type_of_healthfacilityS" class=" type_of_healthfacilityS form-control" value=""  />
+				</div>
+	
 	
 						<div class="form-group col-md-4">
 							<label>@lang('equicare.assess equipment')</label>
@@ -171,11 +160,7 @@
 								</div>
 							</div>
 							
-							{{-- <div class="form-group col-md-4 reasons_stopping_container">
-								<label>@lang('equicare.reasons stopping')</label>
-								{!! Form::textarea('reasons_stopping', null, ['rows' => 2, 'class' => 'form-control']) !!}
-							</div> --}}
-							<div class="form-group col-md-4">
+							<div class="form-group col-md-4 ">
 								<label>@lang('equicare.reasons stopping')</label>
 								{!! Form::select('reasons_stopping', [
 									'No repair' => __("equicare.No repair"),
@@ -214,27 +199,27 @@ d							</div>
 						<div id="inputContainer">
 						<div  class="form-group col-md-4 equipment_stops_date_time_container">
 							<label for="spare-part-quantity">@lang('equicare.SPARE_NO')  </label>
-							<input type="text" class="form-control" placeholder="Input 1" name="SPARE_NO"  id="input1_1">
+							{{-- <input type="text" class="form-control" placeholder="Input 1" name="SPARE_NO"  > --}}
 
-							{{-- {!! Form::text('SPARE_NO', null, ['class' => 'form-control', 'id' => 'spare-part-quantity']) !!} --}}
+							{!! Form::text('SPARE_NO[]', null, ['class' => 'form-control', 'id' => 'spare-part-quantity']) !!}
 						  </div>
 				
 					  <div class="form-group col-md-4 equipment_stops_date_time_container">
 						<label for="spare-part-name">  @lang('equicare.Spare Part Name') </label>
-						<input type="text" class="form-control" placeholder="Input 2" name="spare_name "  id="input1_2">
+						{{-- <input type="text" class="form-control" placeholder="Input 2" name="spare_name "  > --}}
 
-						{{-- {!! Form::text('spare_name', null, ['class' => 'form-control', 'id' => 'spare-part-name']) !!} --}}
+						{!! Form::text('spare_name[]', null, ['class' => 'form-control', 'id' => 'spare-part-name']) !!}
 					  </div>
 					  <div class="form-group col-md-4 equipment_stops_date_time_container">
 						<label for="spare-part-quantity">@lang('equicare.Quantity')  </label>
-						<input type="text" class="form-control" placeholder="Input 3" name="quantity"  id="input1_3">
+						{{-- <input type="text" class="form-control" placeholder="Input 3" name="quantity"  > --}}
 
-						{{-- {!! Form::text('quantity', null, ['class' => 'form-control', 'id' => 'spare-part-quantity']) !!} --}}
+						{!! Form::text('quantity[]', null, ['class' => 'form-control', 'id' => 'spare-part-quantity']) !!}
 					  </div>
 					  <div class="form-group col-md-4 equipment_stops_date_time_container">
 						<label for="spare-part-type">@lang('equicare.Type_SPARE') </label>
-						{{-- {!! Form::text('type_sp', null, ['class' => 'form-control', 'id' => 'spare-part-type']) !!} --}}
-						<input type="text" class="form-control" placeholder="Input 4" name="type_sp"  id="input1_4">
+						{!! Form::text('type_sp[]', null, ['class' => 'form-control', 'id' => 'spare-part-type']) !!}
+						{{-- <input type="text" class="form-control" placeholder="Input 4" name="type_sp"  > --}}
 
 
 					  </div>
@@ -256,6 +241,23 @@ d							</div>
 					</div> --}}
 				  </div>
 				</div>
+				<div class="row">
+					<div class="form-group col-md-12">
+						<div class="checkbox icheck">
+							<label>
+								<input type="checkbox" name="is_contamination" value="1" class="minimal">&nbsp;
+								@lang('equicare.is_contamination')</label>
+						</div>
+					</div>
+					<div class="form-group col-md-12"> 
+						 {{-- <input type="hidden" name="equip_id" id="equip_id" value="" /> --}}
+						<input type="hidden" name="equip_id" id="equip_id" value="{{old('equip_id')}}" />
+						<input type="hidden" name="hospital_id" id="hospital_id" value="{{old('hospital_id')}}" />
+						<input type="hidden" name="department_id" id="department_id" value="{{old('department_id')}}" />
+						<input type="submit" value="@lang('equicare.submit')" class="btn btn-primary btn-flat">
+					</div>
+				</div>
+
 				{{-- <div id="inputContainer">
 					<div class="form-group col-md-4">
 						<input type="text" class="form-control" placeholder="Input 1" name="SPARE_NO">
@@ -282,22 +284,6 @@ d							</div>
 							{!! Form::textarea('reasons_stopping',null,['rows' => 2, 'class' => 'form-control']) !!}
 						</div> --}}
 					</div>
-					<div class="row">
-						<div class="form-group col-md-12">
-							<div class="checkbox icheck">
-								<label>
-									<input type="checkbox" name="is_contamination" value="1" class="minimal">&nbsp;
-									@lang('equicare.is_contamination')</label>
-							</div>
-						</div>
-						<div class="form-group col-md-12">
-							{{-- <input type="hidden" name="equip_id" id="equip_id" value="" /> --}}
-							<input type="hidden" name="equip_id" id="equip_id" value="{{old('equip_id')}}" />
-							<input type="hidden" name="hospital_id" id="hospital_id" value="{{old('hospital_id')}}" />
-							<input type="hidden" name="department_id" id="department_id" value="{{old('department_id')}}" />
-							<input type="submit" value="@lang('equicare.submit')" class="btn btn-primary btn-flat">
-						</div>
-					</div>
 			</div>
 			</form>
 
@@ -308,14 +294,353 @@ d							</div>
 </div>
 
 
+<style>
+	.new-input-field {
+		display: block;
+  width: 100%;
+  max-width: 33.33%;
+  padding: 5.5rem;
+  margin-bottom: 0.5rem;
 
+  box-sizing: border-box;
+  align-self: flex-end;
 
+}
+
+.new-input-field input {
+  margin-bottom: 0.5rem;
+}
+
+.new-input-field button {
+  align-self: flex-end;
+}
+</style>
+ 
 
 @endsection
 @section('scripts')
 <script src="{{ asset('assets/js/datetimepicker.js') }}" type="text/javascript"></script>
 <script type="text/javascript">
-// let inputCount = 1;
+$(document).ready(function() {
+	$('.unique_id_select2').select2({
+	placeholder: '{{__("equicare.select_option")}}',
+	allowClear: true
+	});
+	$('.hospital_select2').select2({
+		placeholder: '{{__("equicare.select_option")}}',
+		allowClear: true
+	});
+	$('.department_select2').select2({
+		placeholder: '{{__("equicare.select_option")}}',
+		allowClear: true
+	});
+	$('.governorate_id_select2').select2({
+		placeholder: '{{__("equicare.select_option")}}',
+		allowClear: true
+	});
+
+	$('.directorate_id_select2').select2({
+		placeholder: '{{__("equicare.select_option")}}',
+		allowClear: true
+	});
+
+	$('.type_of_healthfacility_id_select2').select2({
+		placeholder: '{{__("equicare.select_option")}}',
+		allowClear: true
+	});
+
+
+	if($('#external').attr('checked') =='checked'){
+			$('.report_no').css('display','block');
+	}
+	$('#external').on('ifChecked ifUnchecked',function(e){
+		if(e.type == 'ifChecked'){
+			$('.report_no').show();
+		}else{
+			$('.report_no').hide();
+		}
+	})
+
+});
+@if ($errors->any())
+		
+const setSelectValues = () => {
+	if ("{{ old('hospital_id') }}") {
+		$('.hospital_select2').val("{{ old('hospital_id') }}").trigger('change'); 
+	}   
+	if ("{{ old('department_id') }}" && "{{ old('hospital_id') }}" == '') {
+		$('.department_select2').val("{{ old('department_id') }}").trigger('change'); 
+	}   
+	if ("{{ old('equip_id') }}" && "{{ old('hospital_id') }}" == '' && "{{ old('department_id') }}" == '') {
+		$('.unique_id_select2').val("{{ old('equip_id') }}").trigger('change');  
+	}  
+};
+		setTimeout(() => {
+		setSelectValues();
+}, 500);
+@endif
+$('.next_due_date').datepicker({
+	todayHighlight: true,
+	format:"{{env('date_settings')=='' ? 'yyyy-mm-dd' : env('date_settings')}}",
+})
+$('.call_register_date_time').datetimepicker({
+	sideBySide: true,
+format: 'YYYY-MM-DD HH:mm:ss'
+
+})
+$('.unique_id_select2').on('change',function(){
+var value = $(this).val();
+$('#equip_id').val(value);
+var equip_name = $('.equip_name');
+var hospitals = $('.hospital_select2');
+var sr_no = $('.sr_no');
+var company = $('.company');
+var model = $('.model');
+var production_date=$('.production_date');
+var Donor=$('.Donor');
+var name_donors=$('.name_donors');
+var phone_donors=$('.phone_donors');
+var provenance=$('.provenance');
+var	governorate=$('.governorate')
+var	directorate=$('.directorate')
+var	type_of_healthfacilityS=$('.type_of_healthfacilityS')
+
+var department = $('.department_select2');
+if(value==""){
+	equip_name.val("");
+	sr_no.val("");
+	company.val("");
+	model.val("");
+	department.val("");
+	production_date.val("");
+	Donor.val("");
+	name_donors.val("");
+	phone_donors.val("");
+	provenance.val("");
+	governorate.val("");
+	directorate.val("");
+
+	type_of_healthfacilityS.val("");
+}
+if(value !=""){
+	$.ajax({
+		url : "{{ url('unique_id_preventive')}}" ,
+		type : 'get',
+
+		data:{'id' : value },
+		success:function(data){
+				// console.log(data);
+				equip_name.val(data.success.name);
+				hospitals.val(data.success.hospital_id);
+				sr_no.val(data.success.sr_no);
+				company.val(data.success.company);
+				model.val(data.success.model);
+				department.val(data.success.department);
+				production_date.val(data.success.production_date);
+				provenance.val(data.success.provenance);
+				governorate.val(data.success.governorate);
+				directorate.val(data.success.directorate);
+				type_of_healthfacilityS.val(data.success.type_of_healthfacilityS);
+
+
+				Donor.val(data.success.Donor);
+				name_donors.val(data.success.name_donors);
+				phone_donors.val(data.success.phone_donors);
+
+
+				new PNotify({
+					title: ' Success!',
+					text: "{{__('equicare.equipment_data_fetched')}}",
+					type: 'success',
+					delay: 3000,
+					nonblock: {
+						nonblock: true
+					}
+				});
+
+				$('.unique_id_select2').select2({
+					placeholder: '{{__("equicare.select_option")}}',
+					allowClear: true
+				});
+				$('.hospital_select2').select2({
+					placeholder: '{{__("equicare.select_option")}}',
+					allowClear: true
+				});
+				$('.department_select2').select2({
+					placeholder: '{{__("equicare.select_option")}}',
+					allowClear: true
+				});
+
+			}
+		});
+}
+});
+
+$('.hospital_select2').on('change',function(){
+// console.log($(this).val());
+var value = $(this).val();
+$('#hospital_id').val(value);
+		var equip_name = $('.equip_name');
+		var hospitals = $('.hospital_select2');
+		var department = $('.department_select2');
+		var unique_id = $('.unique_id_select2');
+		var sr_no = $('.sr_no');
+		var company = $('.company');
+		var model = $('.model');
+		var production_date=$('.production_date');
+		var Donor=$('.Donor');
+		var name_donors=$('.name_donors');
+		var phone_donors=$('.phone_donors');
+		var provenance=$('.provenance');
+
+
+		if(value==""){
+			equip_name.val("");
+			sr_no.val("");
+			company.val("");
+			model.val("");
+			department.val("");
+			production_date.val("");
+			Donor.val("");
+			name_donors.val("");
+			phone_donors.val("");
+			provenance.val("");
+
+			unique_id.trigger("change");
+			unique_id.val("");
+
+		}
+		if(value !=""){
+			$.ajax({
+				url : "{{ url('hospital_preventive')}}" ,
+				type : 'get',
+
+				data:{'id' : value },
+				success:function(data){
+					console.log(data);
+					department.empty();
+					unique_id.empty();
+				if (data.department) {
+					department.append(
+						'<option value=""></option>'
+						);
+					$.each(data.department,function(k,v){
+						department.append(
+							'<option value="'+k+'">'+v+'</option>'
+							);
+					});
+				}
+
+				if (data.unique_id) {
+					unique_id.append(
+						'<option value=""></option>'
+						);
+					$.each(data.unique_id,function(k,v){
+						unique_id.append(
+							'<option value="'+k+'">'+v+'</option>'
+							);
+					});
+				}
+			 $('.unique_id_select2').select2({
+				 placeholder: '{{__("equicare.select_option")}}',
+				 allowClear: true
+			 });
+			 $('.hospital_select2').select2({
+				 placeholder: '{{__("equicare.select_option")}}',
+				 allowClear: true
+			 });
+			 $('.department_select2').select2({
+				 placeholder: '{{__("equicare.select_option")}}',
+				 allowClear: true
+			 });
+				 if ("{{ old('department_id') }}") {
+		$('.department_select2').val("{{ old('department_id') }}").trigger('change'); 
+	} 
+
+		 }
+		});
+		}
+	});
+
+
+$('.department_select2').on('change',function(){
+var value = $(this).val();
+$('#department_id').val(value);
+		var equip_name = $('.equip_name');
+		var hospitals = $('.hospital_select2');
+
+		var unique_id = $('.unique_id_select2');
+		var sr_no = $('.sr_no');
+		var company = $('.company');
+		var model = $('.model');
+		var production_date=$('.production_date');
+		var Donor=$('.Donor');
+		var name_donors=$('.name_donors');
+		var phone_donors=$('.phone_donors');
+		var provenance=$('.provenance');
+
+		if(value==""){
+			equip_name.val("");
+			sr_no.val("");
+			company.val("");
+			model.val("");
+			production_date.val("");
+			Donor.val("");
+			name_donors.val("");
+			phone_donors.val("");
+			provenance.val("");
+
+
+			$(this).val("");
+			unique_id.trigger("change");
+			unique_id.val("");
+
+		}
+		if(value !=""){
+			$.ajax({
+				url : "{{ url('department_preventive')}}" ,
+				type : 'get',
+
+				data:{
+					'department' : value,
+					'hospital_id':hospitals.val()
+				},
+				success:function(data){
+				 unique_id.empty();
+
+				if (data.unique_id) {
+					unique_id.append(
+						'<option value=""></option>'
+						);
+					$.each(data.unique_id,function(k,v){
+						unique_id.append(
+							'<option value="'+k+'">'+v+'</option>'
+							);
+					});
+				}
+
+			 $('.unique_id_select2').select2({
+				 placeholder: '{{__("equicare.select_option")}}',
+				 allowClear: true
+			 });
+			 $('.hospital_select2').select2({
+				 placeholder: '{{__("equicare.select_option")}}',
+				 allowClear: true
+			 });
+			 $('.department_select2').select2({
+				 placeholder: '{{__("equicare.select_option")}}',
+				 allowClear: true
+			 });
+				 if ("{{ old('equip_id') }}") {
+		$('.unique_id_select2').val("{{ old('equip_id') }}").trigger('change');  
+		   }  
+
+		 }
+		});
+		}
+	});
+
+let inputCount = 1;
 
 // function addInputFields() {
 //   const container = document.getElementById("inputContainer");
@@ -323,30 +648,86 @@ d							</div>
 //   const newInput1 = document.createElement("input");
 //   newInput1.type = "text";
 //   newInput1.placeholder = "Input 1";
-//   newInput1.name = `input${inputCount}_1`;
+//   newInput1.name = `SPARE_NO[]`;
+//   newInput1.id = `input${inputCount}_1`;
+
 
 //   const newInput2 = document.createElement("input");
 //   newInput2.type = "text";
 //   newInput2.placeholder = "Input 2";
-//   newInput2.name = `input${inputCount}_2`;
+//   newInput2.name = `spare_name[]`;
+//   newInput2.id = `input${inputCount}_2`;
 
 //   const newInput3 = document.createElement("input");
 //   newInput3.type = "text";
 //   newInput3.placeholder = "Input 3";
-//   newInput3.name = `input${inputCount}_3`;
+//   newInput3.name = `quantity[]`;
+//   newInput3.id = `input${inputCount}_3`;
 
 //   const newInput4 = document.createElement("input");
 //   newInput4.type = "text";
 //   newInput4.placeholder = "Input 4";
 //   newInput4.name = `input${inputCount}_4`;
+//   newInput4.id = `input${inputCount}_4`;
 
 //   const removeButton = document.createElement("button");
 //   removeButton.textContent = "Delete";
 //   removeButton.onclick = function() {
 // 	container.removeChild(this.parentNode);
 //   };
+function addInputFields() {
+  const container = document.getElementById("inputContainer");
+  container.classList=' form-group col-md-4'
+
+  const newInput1 = document.createElement("input");
+  newInput1.type = "text";
+  newInput1.placeholder = "@lang('equicare.SPARE_NO')";
+  newInput1.name = `SPARE_NO[]`;
+  newInput1.id = `input${inputCount}_1`;
+  newInput1.classList='form-control'
+
+  const newInput2 = document.createElement("input");
+  newInput2.type = "text";
+  newInput2.placeholder = "Input 2";
+  newInput2.name = `spare_name[]`;
+  newInput2.id = `input${inputCount}_2`;
+  newInput2.classList='form-control'
+
+  const newInput3 = document.createElement("input");
+  newInput3.type = "text";
+  newInput3.placeholder = "@lang('equicare.SPARE_NO')";
+  newInput3.name = `quantity[]`;
+  newInput3.id = `input${inputCount}_3`;
+  newInput3.classList='form-control'
+
+  const newInput4 = document.createElement("input");
+  newInput4.type = "text";
+  newInput4.placeholder = "Input 4";
+  newInput4.name = `input${inputCount}_4`;
+  newInput4.id = `input${inputCount}_4`;
+  newInput4.classList='form-control'
+
+  const removeButton = document.createElement("button");
+  removeButton.textContent = "Delete";
+  removeButton.onclick = function() {
+    container.removeChild(this.parentNode);
+  };
+
+  const newDiv = document.createElement("div");
+
+  // Add a class to the new div
+  newDiv.classList='form-group  col-md-4';
+  newDiv.appendChild(newInput1);
+  newDiv.appendChild(newInput2);
+  newDiv.appendChild(newInput3);
+  newDiv.appendChild(newInput4);
+  newDiv.appendChild(removeButton);
+
+  container.appendChild(newDiv);
+}
 
 //   const newDiv = document.createElement("div");
+//   newDiv.classList.add("form-group col-md-4 ");
 //   newDiv.appendChild(newInput1);
 //   newDiv.appendChild(newInput2);
 //   newDiv.appendChild(newInput3);
@@ -357,61 +738,6 @@ d							</div>
 
 //   inputCount++;
 // }
-let inputCount = 1;
-
-function addInputFields() {
-  const container = document.getElementById("inputContainer");
-
-  const newInput1 = document.createElement("input");
-  newInput1.type = "text";
-  newInput1.placeholder = "Input 1";
-  newInput1.id = `input${inputCount}_1`;
-  newInput1.name = "SPARE_NO[]";
-  newInput1.class="form-control";
-
-
-  const newInput2 = document.createElement("input");
-  newInput2.type = "text";
-  newInput2.placeholder = "Input 2";
-  newInput2.id = `input${inputCount}_2`;
-  newInput2.name = "spare_name[]";
-  newInput2.class="form-control";
-
-
-  const newInput3 = document.createElement("input");
-  newInput3.type = "text";
-  newInput3.placeholder = "Input 3";
-  newInput3.id = `input${inputCount}_3`;
-  newInput3.name = "quantity[]";
-  newInput3.class="form-control";
-
-
-  const newInput4 = document.createElement("input");
-  newInput4.type = "text";
-  newInput4.placeholder = "Input 4";
-  newInput4.id = `input${inputCount}_4`;
-  newInput4.name = "type_sp[]";
-  newInput4.class="form-control";
-
-
-  const removeButton = document.createElement("button");
-   removeButton.textContent = "Delete";
-   function delteInputFields() {
-	container.removeChild(this.parentNode);
-  };
-
-  const newDiv = document.createElement("div");
-  newDiv. class="form-group col-md-4 equipment_stops_date_time_container";
-  newDiv.appendChild(newInput1);
-  newDiv.appendChild(newInput2);
-  newDiv.appendChild(newInput3);
-  newDiv.appendChild(newInput4);
-  newDiv.appendChild(removeButton);
-
-  container.appendChild(newDiv);
-
-  inputCount++;
-}
 // Assuming you have a jQuery library available
 $(document).ready(function() {
     $('#assess_equipment').change(function() {
@@ -471,324 +797,6 @@ document.getElementById('save-spare-part').addEventListener('click', () => {
 
 
 
-	$(document).ready(function() {
-		    $('.unique_id_select2').select2({
-			placeholder: '{{__("equicare.select_option")}}',
-			allowClear: true
-			});
-			$('.hospital_select2').select2({
-				placeholder: '{{__("equicare.select_option")}}',
-				allowClear: true
-			});
-			$('.department_select2').select2({
-				placeholder: '{{__("equicare.select_option")}}',
-				allowClear: true
-			});
-			$('.governorate_id_select2').select2({
-				placeholder: '{{__("equicare.select_option")}}',
-				allowClear: true
-			});
-
-			$('.directorate_id_select2').select2({
-				placeholder: '{{__("equicare.select_option")}}',
-				allowClear: true
-			});
-
-			$('.type_of_healthfacility_id_select2').select2({
-				placeholder: '{{__("equicare.select_option")}}',
-				allowClear: true
-			});
-
-
-		    if($('#external').attr('checked') =='checked'){
-		    		$('.report_no').css('display','block');
-		    }
-		    $('#external').on('ifChecked ifUnchecked',function(e){
-		    	if(e.type == 'ifChecked'){
-		    		$('.report_no').show();
-		    	}else{
-		    		$('.report_no').hide();
-		    	}
-		    })
-
-		});
-		@if ($errors->any())
-				
-        const setSelectValues = () => {
-            if ("{{ old('hospital_id') }}") {
-                $('.hospital_select2').val("{{ old('hospital_id') }}").trigger('change'); 
-            }   
-            if ("{{ old('department_id') }}" && "{{ old('hospital_id') }}" == '') {
-                $('.department_select2').val("{{ old('department_id') }}").trigger('change'); 
-            }   
-            if ("{{ old('equip_id') }}" && "{{ old('hospital_id') }}" == '' && "{{ old('department_id') }}" == '') {
-                $('.unique_id_select2').val("{{ old('equip_id') }}").trigger('change');  
-            }  
-        };
-				setTimeout(() => {
-                setSelectValues();
-        }, 500);
-  @endif
-		$('.next_due_date').datepicker({
-			todayHighlight: true,
-			format:"{{env('date_settings')=='' ? 'yyyy-mm-dd' : env('date_settings')}}",
-		})
-		$('.call_register_date_time').datetimepicker({
-			sideBySide: true,
-      format: 'YYYY-MM-DD HH:mm:ss'
-
-		})
-		$('.unique_id_select2').on('change',function(){
-		var value = $(this).val();
-		$('#equip_id').val(value);
-		var equip_name = $('.equip_name');
-		var hospitals = $('.hospital_select2');
-		var sr_no = $('.sr_no');
-		var company = $('.company');
-		var model = $('.model');
-		var production_date=$('.production_date');
-		var Donor=$('.Donor');
-		var name_donors=$('.name_donors');
-		var phone_donors=$('.phone_donors');
-		var provenance=$('.provenance');
-		var	governorate=$('.governorate')
-		var	directorate=$('.directorate')
-		var	type_of_healthfacilityS=$('.type_of_healthfacilityS')
-
-		var department = $('.department_select2');
-		if(value==""){
-			equip_name.val("");
-			sr_no.val("");
-			company.val("");
-			model.val("");
-			department.val("");
-			production_date.val("");
-			Donor.val("");
-			name_donors.val("");
-			phone_donors.val("");
-			provenance.val("");
-			governorate.val("");
-			directorate.val("");
-
-			type_of_healthfacilityS.val("");
-		}
-		if(value !=""){
-			$.ajax({
-				url : "{{ url('unique_id_preventive')}}" ,
-				type : 'get',
-
-				data:{'id' : value },
-				success:function(data){
-			    		// console.log(data);
-			    		equip_name.val(data.success.name);
-			    		hospitals.val(data.success.hospital_id);
-			    		sr_no.val(data.success.sr_no);
-			    		company.val(data.success.company);
-			    		model.val(data.success.model);
-			    		department.val(data.success.department);
-						production_date.val(data.success.production_date);
-						provenance.val(data.success.provenance);
-						governorate.val(data.success.governorate);
-						directorate.val(data.success.directorate);
-						type_of_healthfacilityS.val(data.success.type_of_healthfacilityS);
-
-
-						Donor.val(data.success.Donor);
-						name_donors.val(data.success.name_donors);
-						phone_donors.val(data.success.phone_donors);
-
-
-			    		new PNotify({
-			    			title: ' Success!',
-			    			text: "{{__('equicare.equipment_data_fetched')}}",
-			    			type: 'success',
-			    			delay: 3000,
-			    			nonblock: {
-			    				nonblock: true
-			    			}
-			    		});
-
-			    		$('.unique_id_select2').select2({
-			    			placeholder: '{{__("equicare.select_option")}}',
-			    			allowClear: true
-			    		});
-			    		$('.hospital_select2').select2({
-			    			placeholder: '{{__("equicare.select_option")}}',
-			    			allowClear: true
-			    		});
-			    		$('.department_select2').select2({
-			    			placeholder: '{{__("equicare.select_option")}}',
-			    			allowClear: true
-			    		});
-
-			    	}
-			    });
-		}
-	});
-
-	$('.hospital_select2').on('change',function(){
-		// console.log($(this).val());
-		var value = $(this).val();
-		$('#hospital_id').val(value);
-				var equip_name = $('.equip_name');
-				var hospitals = $('.hospital_select2');
-				var department = $('.department_select2');
-				var unique_id = $('.unique_id_select2');
-				var sr_no = $('.sr_no');
-				var company = $('.company');
-				var model = $('.model');
-				var production_date=$('.production_date');
-				var Donor=$('.Donor');
-				var name_donors=$('.name_donors');
-				var phone_donors=$('.phone_donors');
-				var provenance=$('.provenance');
-
-
-				if(value==""){
-					equip_name.val("");
-					sr_no.val("");
-					company.val("");
-					model.val("");
-					department.val("");
-					production_date.val("");
-			//		Donor.val("");
-			//		name_donors.val("");
-		//			phone_donors.val("");
-		//			provenance.val("");
-
-					unique_id.trigger("change");
-					unique_id.val("");
-
-				}
-				if(value !=""){
-					$.ajax({
-						url : "{{ url('hospital_preventive')}}" ,
-						type : 'get',
-
-						data:{'id' : value },
-						success:function(data){
-							console.log(data);
-							department.empty();
-							unique_id.empty();
-			    		if (data.department) {
-			    			department.append(
-			    				'<option value=""></option>'
-			    				);
-			    			$.each(data.department,function(k,v){
-			    				department.append(
-			    					'<option value="'+k+'">'+v+'</option>'
-			    					);
-			    			});
-			    		}
-
-			    		if (data.unique_id) {
-			    			unique_id.append(
-			    				'<option value=""></option>'
-			    				);
-			    			$.each(data.unique_id,function(k,v){
-			    				unique_id.append(
-			    					'<option value="'+k+'">'+v+'</option>'
-			    					);
-			    			});
-			    		}
-				     $('.unique_id_select2').select2({
-				     	placeholder: '{{__("equicare.select_option")}}',
-				     	allowClear: true
-				     });
-				     $('.hospital_select2').select2({
-				     	placeholder: '{{__("equicare.select_option")}}',
-				     	allowClear: true
-				     });
-				     $('.department_select2').select2({
-				     	placeholder: '{{__("equicare.select_option")}}',
-				     	allowClear: true
-				     });
-						 if ("{{ old('department_id') }}") {
-                $('.department_select2').val("{{ old('department_id') }}").trigger('change'); 
-            } 
-
-				 }
-				});
-				}
-			});
-
-
-	$('.department_select2').on('change',function(){
-		var value = $(this).val();
-		$('#department_id').val(value);
-				var equip_name = $('.equip_name');
-				var hospitals = $('.hospital_select2');
-
-				var unique_id = $('.unique_id_select2');
-				var sr_no = $('.sr_no');
-				var company = $('.company');
-				var model = $('.model');
-				var production_date=$('.production_date');
-				var Donor=$('.Donor');
-				var name_donors=$('.name_donors');
-				var phone_donors=$('.phone_donors');
-				var provenance=$('.provenance');
-
-				if(value==""){
-					equip_name.val("");
-					sr_no.val("");
-					company.val("");
-					model.val("");
-					production_date.val("");
-					Donor.val("");
-					name_donors.val("");
-					phone_donors.val("");
-					provenance.val("");
-
-
-					$(this).val("");
-					unique_id.trigger("change");
-					unique_id.val("");
-
-				}
-				if(value !=""){
-					$.ajax({
-						url : "{{ url('department_preventive')}}" ,
-						type : 'get',
-
-						data:{
-							'department' : value,
-							'hospital_id':hospitals.val()
-						},
-						success:function(data){
-			    		 unique_id.empty();
-
-			    		if (data.unique_id) {
-			    			unique_id.append(
-			    				'<option value=""></option>'
-			    				);
-			    			$.each(data.unique_id,function(k,v){
-			    				unique_id.append(
-			    					'<option value="'+k+'">'+v+'</option>'
-			    					);
-			    			});
-			    		}
-
-				     $('.unique_id_select2').select2({
-				     	placeholder: '{{__("equicare.select_option")}}',
-				     	allowClear: true
-				     });
-				     $('.hospital_select2').select2({
-				     	placeholder: '{{__("equicare.select_option")}}',
-				     	allowClear: true
-				     });
-				     $('.department_select2').select2({
-				     	placeholder: '{{__("equicare.select_option")}}',
-				     	allowClear: true
-				     });
-						 if ("{{ old('equip_id') }}") {
-                $('.unique_id_select2').val("{{ old('equip_id') }}").trigger('change');  
-           		}  
-
-				 }
-				});
-				}
-			});
 </script>
 <script type="text/javascript">
 	$.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });

@@ -42,7 +42,13 @@ class CreateEquipmentTable extends Migration {
 			$table->string('phone_donors')->nullable();
 			$table->string('directorate')->nullable();
 			$table->string('governorate')->nullable();
-			$table->string('type_of_healthfcilityS')->nullable();
+			$table->integer('model_number')->nullable();
+			$table->string('Location')->nullable();
+			$table->string('Manufacturer')->nullable();
+
+
+			// $table->string('type_of_healthfcilityS');
+			$table->date('next_maintenance_date')->nullable();
 
 			
 			$table->boolean('is_critical')->nullable();

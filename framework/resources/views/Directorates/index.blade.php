@@ -38,6 +38,14 @@
 							@endif
 						</select>
 					</div> --}}
+					<form action="{{ route('directorates.import') }}" method="POST" enctype="multipart/form-data">
+						@csrf
+						<div class="form-group">
+							<label for="excel_file">Select Excel File</label>
+							<input type="file" class="form-control-file" id="excel_file" name="excel_file" required>
+						</div>
+						<button type="submit" class="btn btn-primary">Import Directorates</button>
+					</form>
 					<div class="box-body table-responsive">
 						<table class="table table-bordered table-hover dataTable bottom-padding" id="data_table">
 							<thead class="thead-inverse">

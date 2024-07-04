@@ -9,6 +9,7 @@ use QrCode;
 use App\Hospital;
 use App\CallEntry;
 use App\Equipment;
+use App\Tests_equp;
 use App\Department;
 use App\Calibration;
 use Illuminate\Http\Request;
@@ -23,6 +24,7 @@ use App\Http\Requests\EquipmentRequest;
 use App\Governorate;    
 use App\Directorate;
 use App\Type_of_healthfacility;
+use Illuminate\Http\UploadedFile;
 // use Maatwebsite\Excel\Concerns\FromCollection;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Artisan;
@@ -64,7 +66,11 @@ class EquipmentController extends Controller
                 $equipment->date_of_installation = date_change($equipment->date_of_installation);
                 $equipment->production_date= date_change($equipment->production_date);
                 $equipment->warranty_due_date = date_change($equipment->warranty_due_date);
+                $equipment->production_date= date_change($equipment->production_date);
                 $updatedEquipments[] = $equipment;
+
+
+
             }
             $equipments = collect($updatedEquipments);
             return Excel::download(new class($equipments) implements FromView
@@ -149,14 +155,23 @@ class EquipmentController extends Controller
         $equipment->name_donors = $request->name_donors;
         $equipment->governorate = $request->governorate;
         $equipment->directorate = $request->directorate;
+        $equipment->model_number = $request->model_number;
+        $equipment->Location = $request->Location;
+        $equipment->Manufacturer = $request->Manufacturer;
         //  $equipment->type_of_healthfacilityS = $request->type_of_healthfacilityS;
 
         
         
         $equipment->provenance = $request->provenance;
-        $equipment->CATALOGUE = $request->CATALOGUE;
+        // $equipment->CATALOGUE = $request->CATALOGUE;
         $equipment->model = $request->model;
         $equipment->qr_id = $request->qr_id;
+        // if (isset($request->CATALOGUE))  {
+            // $imageName = time() . '.' . $request->CATALOGUE->getClientOriginalExtension();
+            // $request->CATALOGUE->move('uploads/CATALOGUES/', $imageName);
+            // $equipment->calibration_certificate = 'uploads/CATALOGUES/' . $imageName;
+        // }
+
 
         $dateFormat = env('date_convert', 'Y-m-d');
         $date_of_purchase = !empty($request->date_of_purchase) ? DateTime::createFromFormat($dateFormat, $request->date_of_purchase)->format('Y-m-d') : null;
@@ -202,9 +217,38 @@ class EquipmentController extends Controller
 			}
             $equipment->unique_id = $unique_id;
         }
+    //     if(isset($request->CATALOGUE)){
+	// 		$imageName = time() . '.' . request()->CATALOGUE->getClientOriginalExtension();
+    //   request()->CATALOGUE->move('uploads/CATALOGUES/', $imageName);
+    //   $equipment->calibration_certificate = 'uploads/CATALOGUES/' . $imageName;
+	// 	}
+        // $equipment->CATALOGUE = $request->CATALOGUE;
+
         $equipment->save();
 
         $id = $equipment->id;
+
+
+
+
+
+
+
+
+
+        
+        $tests_equp=new Tests_equp;
+        $tests_equp->equip_id = $equipment->id;
+        $tests_equp->stage1_test1_status = $request->stage1_test1_status;
+        $tests_equp->stage1_test2_description = $request->stage1_test2_description;
+        $tests_equp->stage2_test1_status = $request->stage2_test1_status;
+        $tests_equp->stage2_test2_description = $request->stage2_test2_description;
+        $tests_equp->stage3_test1_status = $request->stage3_test1_status;
+        $tests_equp->stage3_test2_description = $request->stage3_test2_description;
+        $tests_equp->stage4_test1_status = $request->stage4_test1_status;
+        $tests_equp->stage4_test2_description = $request->stage4_test2_description;
+        $tests_equp->save();
+
         //for generating qr 
         $equipment = Equipment::find($id);
         //update equipment qr_id if it not coming from request
@@ -227,12 +271,16 @@ class EquipmentController extends Controller
             $equipment->qr_id = $qr->id;
             $equipment->save();
         }
+
         // dd('test');
         return $equipment;
     }
     public function store(EquipmentRequest $request)
     {
         $equipment = $this->store_equipments_common($request,0);
+
+
+
         return redirect('admin/equipments')->with('flash_message', 'Equipment "' . $equipment->name . '" created');
     }
 
