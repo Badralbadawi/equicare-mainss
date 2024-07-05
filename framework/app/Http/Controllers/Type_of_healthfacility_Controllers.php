@@ -43,6 +43,7 @@ class Type_of_healthfacility_Controllers extends Controller {
 	public function store(Type_of_healthfacilityRequest $request) {
 		$type_of_healthfacility = new Type_of_healthfacility;
 		$type_of_healthfacility->name = $request->name;
+		$type_of_healthfacility->category = $request->category;
 		$type_of_healthfacility->short_name = $request->short_name;
 		$type_of_healthfacility->save();
 
@@ -61,6 +62,7 @@ class Type_of_healthfacility_Controllers extends Controller {
 	public function update(Type_of_healthfacilityRequest $request, $id) {
 		$type_of_healthfacility = Type_of_healthfacility::findOrFail($id);
 		$type_of_healthfacility->name = $request->name;
+		$type_of_healthfacility->category = $request->category;
 		$type_of_healthfacility->short_name = $request->short_name;
 		$type_of_healthfacility->save();
 

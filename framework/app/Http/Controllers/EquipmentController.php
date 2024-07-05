@@ -24,6 +24,8 @@ use App\Http\Requests\EquipmentRequest;
 use App\Governorate;    
 use App\Directorate;
 use App\Type_of_healthfacility;
+use App\Accessorie;
+use App\Piece;
 use Illuminate\Http\UploadedFile;
 // use Maatwebsite\Excel\Concerns\FromCollection;
 use Illuminate\Support\Str;
@@ -248,6 +250,35 @@ class EquipmentController extends Controller
         $tests_equp->stage4_test1_status = $request->stage4_test1_status;
         $tests_equp->stage4_test2_description = $request->stage4_test2_description;
         $tests_equp->save();
+        $accessories=new Accessorie;
+        $accessories->equip_id = $equipment->id;
+        // $accessories->accessorie_ids = json_encode($request->accessories);
+        $accessories->name_acce = json_encode($request->name_acce);
+
+		// dd(json_encode($request->code));name_acce
+		$accessories->code_ac = json_encode($request->code_ac);
+		// dd(!empty($request->code) ? date('Y-m-d', strtotime(json_encode($request->code))) : null);
+		//  $cost->start_dates = !empty($request->start_dates) ? date('Y-m-d', strtotime(json_encode($request->start_dates))) : null;
+		$accessories->piece_number = json_encode($request->piece_number);
+		//  $cost->end_dates = !empty($request->end_dates) ? date('Y-m-d', strtotime(json_encode($request->end_dates))) : null;
+		$accessories->quantity_ac = json_encode($request->quantity_ac);
+        $accessories->save();
+	
+        $piece = new Piece;
+        $piece->name_p = json_encode($request->name_p);
+        $piece->type_pi = json_encode($request->type_pi);
+        $piece->numper_pi = json_encode($request->numper_pi);
+        $piece->code_pi = json_encode($request->code_pi);
+        $piece->quantity_pi = json_encode($request->quantity_pi);
+
+
+		// $piece->name_p = $request->name_p;
+		// // $piece->type_pi = $request->type_pi;
+		// $piece->type_pi = $request->type_pi;
+		// $piece->numper_pi = $request->numper_pi;
+		// $piece->code_pi = $request->code_pi;
+		// $piece->quantity_pi = $request->quantity_pi;
+		$piece->save();
 
         //for generating qr 
         $equipment = Equipment::find($id);

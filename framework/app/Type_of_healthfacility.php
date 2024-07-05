@@ -10,7 +10,7 @@ class Type_of_healthfacility extends Model {
 	protected $table = 'type_of_healthfacility';
 	protected $guard_name = 'web';
 
-	protected $fillable = ['name','short_name'];
+	protected $fillable = ['name','short_name','category'];
 
 // 	public function equipments() {
 // 		return $this->hasMany('App\specification', 'department');

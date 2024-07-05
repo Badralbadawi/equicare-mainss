@@ -24,7 +24,7 @@ class DirectorateImport
             Directorate::create([
                 'name' => $row[0],
                 'short_name' => $row[1],
-                'governorate' => $governorate->short_name,
+                'governorate' => $row[2],
             ]);
         }
     }

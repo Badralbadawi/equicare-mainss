@@ -27,7 +27,8 @@
 								<tr>
 									<th> # </th>
 									<th> @lang('equicare.name') </th>
-								<th> @lang('equicare.short_name') </th>
+									<th> @lang('equicare.category') </th>
+								    <th> @lang('equicare.short_name') </th>
 									<th> @lang('equicare.created_on') </th>
 									@if (\Auth::user()->can('Edit type_of_healthfacility') || \Auth::user()->can('Delete type_of_healthfacility'))
 									<th> @lang('equicare.action')</th>
@@ -46,6 +47,7 @@
 								<tr>
 								<td> {{ $count }} </td>
 								<td> {{ ucfirst($type_of_healthfacilitys->name) }} </td>
+								<th> {{ ucfirst($type_of_healthfacilitys->category) }} </th>
 								<td>{{ $type_of_healthfacilitys->short_name ?? "-" }}</td> 
 								<td> {{ $type_of_healthfacilitys->created_at->diffForHumans() }}</td>
 								@if (\Auth::user()->hasDirectPermission('Edit type_of_healthfacility') || \Auth::user()->hasDirectPermission('Delete type_of_healthfacility'))
@@ -71,7 +73,8 @@
 								<tr>
 									<th> # </th>
 									<th> @lang('equicare.name') </th>
-									{{-- <th> @lang('equicare.short_name') </th> --}}
+									<th> @lang('equicare.category') </th>
+									<th> @lang('equicare.short_name') </th>
 									<th> @lang('equicare.created_on') </th>
 									@if (\Auth::user()->hasDirectPermission('Edit type_of_healthfacility') || \Auth::user()->hasDirectPermission('Delete type_of_healthfacility'))
 									<th> @lang('equicare.action')</th>

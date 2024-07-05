@@ -21,16 +21,17 @@ class Type_of_healthfacilityRequest extends FormRequest {
    public function rules() {
 	   return [
 				'name' => 'required',
-	// 			// ''=> '',
+				'category'=> 'required',
 				'short_name' => "bail|required|max:5|alpha_num|unique:departments,short_name,$this->id,id,deleted_at,NULL",
-];
+              ];
    }
 
 	// public function rules() {
 	// 	if ($this->id) {
 	// 		return [
 	// 			'name' => 'required',
-	// 			// ''=> '',
+	// // 			// ''=> '',
+	//            'specification'=> 'required',
 	// 			'short_name' => "bail|required|max:5|alpha_num|unique:departments,short_name,$this->id,id,deleted_at,NULL",
 	// 		];
 	// 	} else {

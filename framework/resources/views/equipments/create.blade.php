@@ -10,6 +10,67 @@
 	<li class="active">@lang('equicare.create')</li>
 	@endsection
 	@section('content')
+	{{-- <style>
+.container {
+  display: table;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 10px;
+}
+
+.input-group {
+  display: table-row;
+}
+
+.input-group input, .input-group button {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+}
+
+.input-group button {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}	  </style> --}}
+	  <style>
+.container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin: -5px;
+  }
+  
+  .input-group {
+	flex: 0 0 calc(30% - 10px);
+	margin: 2px;
+	display: flex;
+	align-items: center;
+  }
+  
+  .input-group input {
+	flex-grow: 1;
+	padding: 3px;
+	border: 1px solid #ccc;
+  }
+  
+  .input-group button {
+	background-color: #f44336;
+	color: white;
+	border: none;
+	padding: 5px 3px;
+	cursor: pointer;
+	margin-left: 10px;
+  }
+  </style>
+
 		<div class="row">
 			<div class="col-md-12">
 				<div class="box box-primary">
@@ -358,12 +419,8 @@
                     </td>
                 </tr>
             </tbody>
-        </table>
-							{{-- <div class="form-group col-md-6">
-								{!! Form::label('CATALOGUE',__('equicare.CATALOGUE')) !!}
-								{!! Form::file('CATALOGUE',null,['class' => 'form-control']) !!}
-							</div> --}}
-							<div class="form-group col-md-4">
+        </table>			
+									<div class="form-group col-md-4">
 								{!! Form::label('CATALOGUE',__('equicare.CATALOGUE')) !!}
 								<input type="file" class="form-control" name="CATALOGUE" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx">
 								{{-- {!! Form::file('CATALOGUE',null,['class' => 'form-control']) !!} --}}
@@ -372,28 +429,449 @@
 								{!! Form::label('next_maintenance_date',__('equicare.next_maintenance_date')) !!}
 								{!! Form::text('next_maintenance_date',null,['class' => 'due_date form-control']) !!}
 							</div>
-		
-
-							<div class="form-group col-md-6">
+							<div class="form-group col-md-4">
 								<label for="notes"> @lang('equicare.notes') </label>
-								<textarea rows="2" name="notes" class="form-control"
+								<textarea rows="1" name="notes" class="form-control"
 								>{{ old('notes') }}</textarea>
 							</div>
+
+
+							<div  class="form-group col-md-3 equipment_stops_date_time_container">
+									
+								<label for="spare-part-quantity">@lang('equicare.SPARE_NO')  </label>
+								{{-- <input type="text" class="form-control" placeholder="Input 1" name="SPARE_NO"  > --}}
+	
+								{!! Form::text('numper_pi[]', null, ['class' => 'form-control', 'id' => 'spare-part-quantity']) !!}
+							  </div>
+							  <div  class="form-group col-md-3 equipment_stops_date_time_container">
+									
+								<label for="spare-part-quantity">@lang('equicare.Spare Part Name')  </label>
+								{{-- <input type="text" class="form-control" placeholder="Input 1" name="SPARE_NO"  > --}}
+	
+								{!! Form::text('name_p[]', null, ['class' => 'form-control', 'id' => 'spare-part-quantity']) !!}
+							  </div>
+							  <div  class="form-group col-md-3 equipment_stops_date_time_container">
+									
+								<label for="spare-part-quantity">@lang('equicare.code_pi')  </label>
+								{{-- <input type="text" class="form-control" placeholder="Input 1" name="SPARE_NO"  > --}}
+	
+								{!! Form::text('code_pi[]', null, ['class' => 'form-control', 'id' => 'spare-part-quantity']) !!}
+							  </div>
+							  <div  class="form-group col-md-3 equipment_stops_date_time_container">
+									
+								<label for="spare-part-quantity">@lang('equicare.Quantity')  </label>
+								{{-- <input type="text" class="form-control" placeholder="Input 1" name="SPARE_NO"  > --}}
+	
+								{!! Form::text('quantity_pi[]', null, ['class' => 'form-control', 'id' => 'spare-part-quantity']) !!}
+							  </div>
+							  <div  class="form-group col-md-3 equipment_stops_date_time_container">
+									
+								<label for="spare-part-quantity">@lang('equicare.Type_SPARE')  </label>
+								{{-- <input type="text" class="form-control" placeholder="Input 1" name="SPARE_NO"  > --}}
+	
+								{!! Form::text('type_pi[]', null, ['class' => 'form-control', 'id' => 'spare-part-quantity']) !!}
+							  </div>
+
+							</div>
+
+
+							<div class="form-group">
+								<div id="inputContainer">
+								</div></div>
+					
+							<div class="row">
+								{{-- <div  class="form-group col-md-4 equipment_stops_date_time_container">
+									
+									{{-- <label for="spare-part-quantity">@lang('equicare.SPARE_NO')  </label> --}}
+									{{-- <input type="text" class="form-control" placeholder="Input 1" name="SPARE_NO"  > --}}
+		
+									{{-- {{-- {!! Form::text('SPARE_NO[]', null, ['class' => 'form-control', 'id' => 'spare-part-quantity']) !!} --}}
+								  </div>
+						
+							  <div class="form-group col-md-4 equipment_stops_date_time_container">
+								{{-- <label for="spare-part-name">  @lang('equicare.Spare Part Name') </label> --}}
+								{{-- <input type="text" class="form-control" placeholder="Input 2" name="spare_name "  > --}}
+		
+								{{-- {!! Form::text('spare_name[]', null, ['class' => 'form-control', 'id' => 'spare-part-name']) !!} --}}
+							  {{-- </div> --}}
+							  {{-- <div class="form-group col-md-4 equipment_stops_date_time_container"> --}}
+								{{-- <label for="spare-part-quantity">@lang('equicare.Quantity')  </label> --}}
+								{{-- <input type="text" class="form-control" placeholder="Input 3" name="quantity"  > --}}
+		
+								{{-- {!! Form::text('quantity[]', null, ['class' => 'form-control', 'id' => 'spare-part-quantity']) !!} --}}
+							  {{-- </div> --}}
+							  {{-- <div class="form-group col-md-4 equipment_stops_date_time_container"> --}}
+								{{-- <label for="spare-part-type">@lang('equicare.Type_SPARE') </label> --}}
+								{{-- {!! Form::text('type_sp[]', null, ['class' => 'form-control', 'id' => 'spare-part-type']) !!} --}}
+								{{-- <input type="text" class="form-control" placeholder="Input 4" name="type_sp"  > --}}
+								
+		
+							  {{-- </div> --}} 
+
+							  <div class="col-md-12" id="fa-fa-plus-id">
+								<button type="button" class="pull-right btn btn-primary " id="addInputButton" ><i
+										class="fa fa-plus" id="add-button"></i> @lang('equicare.add_more_equipments')</button>
+							</div>
+							
+							
+
+
+								<div  class="form-group col-md-4 equipment_stops_date_time_container">
+									<label for="spare-part-quantity">@lang('equicare.code_ac')  </label>
+									{{-- <input type="text" class="form-control" placeholder="Input 1" name="SPARE_NO"  > --}}
+		
+									{!! Form::text('code_ac[]', null, ['class' => 'form-control', 'id' => 'spare-part-quantity']) !!}
+								  </div>
+						
+							  <div class="form-group col-md-4 equipment_stops_date_time_container">
+								<label for="spare-part-name">  @lang('equicare.name_acce') </label>
+								{{-- <input type="text" class="form-control" placeholder="Input 2" name="spare_name "  > --}}
+		
+								{!! Form::text('name_acce[]', null, ['class' => 'form-control', 'id' => 'spare-part-name']) !!}
+							  </div>
+							  <div class="form-group col-md-4 equipment_stops_date_time_container">
+								<label for="spare-part-quantity">@lang('equicare.quantity_ac')  </label>
+								{{-- <input type="text" class="form-control" placeholder="Input 3" name="quantity"  > --}}
+		
+								{!! Form::text('quantity_ac[]', null, ['class' => 'form-control', 'id' => 'spare-part-quantity']) !!}
+							  </div>
+							  <div class="form-group col-md-4 equipment_stops_date_time_container">
+								<label for="spare-part-type">@lang('equicare.piece_number') </label>
+								{!! Form::text('piece_number[]', null, ['class' => 'form-control', 'id' => 'spare-part-type']) !!}
+								{{-- <input type="text" class="form-control" placeholder="Input 4" name="type_sp"  > --}}
+		
+								<div class="col-md-12" id="fa-fa-plus-id">
+
+							 							<div id="inputContainerac"></div>
+								</div>
+
+							  <div class="col-md-12" id="fa-fa-plus-id">
+								<button type="button" class="pull-right btn btn-primary "    id="addInputaccButton"><i
+										class="fa fa-plus"></i> @lang('equicare.add_more_equipments')</button>
+							</div>
+						</div>
+
 							<input type="hidden" name="qr_id" value="{{request('qr_id')}}"/>
 							<div class="form-group col-md-12">
 								<input type="submit" value="@lang('equicare.submit')" class="btn btn-primary btn-flat"/>
 							</div>
-							</div>
 						</form>
 					</div>
-
+				</div>
+			</div>
+		</div>     
+	</div>
 				</div>
 			</div>
 		</div>
 	@endsection
 	@section('scripts')
-		<script type="text/javascript">
+<script src="{{ asset('assets/js/datetimepicker.js') }}" type="text/javascript"></script>
+<script type="text/javascript">
+  let inputCount = 1;
+    let inputCountac = 1;
+
+    function addInputFields() {
+      const container = document.getElementById("inputContainer");
+
+      const inputGroup = document.createElement("div");
+      inputGroup.classList.add("input-group");
+
+      const input1 = document.createElement("input");
+      input1.type = "text";
+      input1.placeholder = "@lang('equicare.numper_pi')";
+      input1.name = `numper_pi[]`;
+      input1.id = `input${inputCount}_1`;
+
+      const input2 = document.createElement("input");
+      input2.type = "text";
+      input2.placeholder = "  @lang('equicare.Spare Part Name')";
+      input2.name = `name_p[]`;
+      input2.id = `input${inputCount}_2`;
+
+      const input3 = document.createElement("input");
+      input3.type = "text";
+      input3.placeholder = "@lang('equicare.Quantity')";
+      input3.name = `quantity_pi[]`;
+      input3.id = `input${inputCount}_3`;
+
+      const input4 = document.createElement("input");
+      input4.type = "text";
+      input4.placeholder = "@lang('equicare.code_pi') ";
+      input4.name = `code_pi[]`;
+      input4.id = `input${inputCount}_4`;
+
+      const input5 = document.createElement("input");
+      input5.type = "text";
+      input5.placeholder = "@lang('equicare.Type_SPARE') ";
+      input5.name = `type_pi[]`;
+      input5.id = `input${inputCount}_5`;
+
+      const removeButton = document.createElement("button");
+      removeButton.textContent = "Delete";
+      removeButton.onclick = function() {
+        container.removeChild(this.parentNode);
+      };
+
+      inputGroup.appendChild(input1);
+      inputGroup.appendChild(input2);
+      inputGroup.appendChild(input3);
+      inputGroup.appendChild(input4);
+      inputGroup.appendChild(removeButton);
+
+      container.appendChild(inputGroup);
+      inputCount++;
+    }
+
+    function addInputaccFields() {
+      const containerac = document.getElementById("inputContainerac");
+
+      const inputGroup = document.createElement("div");
+      inputGroup.classList.add("input-group");
+
+      const input1 = document.createElement("input");
+      input1.type = "text";
+      input1.placeholder = "@lang('equicare.SPARE_NO')";
+      input1.name = `code_ac[]`;
+      input1.id = `inputa${inputCountac}_1`;
+
+      const input2 = document.createElement("input");
+      input2.type = "text";
+      input2.placeholder = "Input 2";
+      input2.name = `name_acce[]`;
+      input2.id = `inputa${inputCountac}_2`;
+
+      const input3 = document.createElement("input");
+      input3.type = "text";
+      input3.placeholder = "@lang('equicare.SPARE_NO')";
+      input3.name = `piece_number[]`;
+      input3.id = `inputa${inputCountac}_3`;
+
+      const input4 = document.createElement("input");
+      input4.type = "text";
+      input4.placeholder = "Input 4";
+      input4.name = `quantity_ac[]`;
+      input4.id = `inputa${inputCountac}_4`;
+
+      const removeButton = document.createElement("button");
+      removeButton.textContent = "Delete";
+      removeButton.onclick = function() {
+        containerac.removeChild(this.parentNode);
+      };
+
+      inputGroup.appendChild(input1);
+      inputGroup.appendChild(input2);
+      inputGroup.appendChild(input3);
+      inputGroup.appendChild(input4);
+      inputGroup.appendChild(removeButton);
+
+      containerac.appendChild(inputGroup);
+      inputCountac++;
+    }
+
+    const addInputButton = document.getElementById("addInputButton");
+    addInputButton.onclick = addInputFields;
+
+    const addInputaccButton = document.getElementById("addInputaccButton");
+    addInputaccButton.onclick = addInputaccFields;
+
+// let inputCount = 1;
+
+// function addInputFields() {
+//   const container = document.getElementById("inputContainer");
+// //   container.classList=' form-group col-md-4'
+
+//   const newInput1 = document.createElement("input");
+//   newInput1.type = "text";
+//   newInput1.placeholder = "@lang('equicare.SPARE_NO')";
+//   newInput1.name = `SPARE_NO[]`;
+//   newInput1.id = `input${inputCount}_1`;
+// //   newInput1.classList='form-control'
+
+//   const newInput2 = document.createElement("input");
+//   newInput2.type = "text";
+//   newInput2.placeholder = "Input 2";
+//   newInput2.name = `spare_name[]`;
+//   newInput2.id = `input${inputCount}_2`;
+// //   newInput2.classList='form-control'
+
+//   const newInput3 = document.createElement("input");
+//   newInput3.type = "text";
+//   newInput3.placeholder = "@lang('equicare.SPARE_NO')";
+//   newInput3.name = `quantity[]`;
+//   newInput3.id = `input${inputCount}_3`;
+// //   newInput3.classList='form-control'
+
+//   const newInput4 = document.createElement("input");
+//   newInput4.type = "text";
+//   newInput4.placeholder = "Input 4";
+//   newInput4.name = `input${inputCount}_4`;
+//   newInput4.id = `input${inputCount}_4`;
+// //   newInput4.classList='form-control'
+
+//   const removeButton = document.createElement("button");
+//   removeButton.textContent = "Delete";
+//   removeButton.onclick = function() {
+//     container.removeChild(this.parentNode);
+//   };
+
+//   const newDiv = document.createElement("div");
+
+//   // Add a class to the new div
+// //   newDiv.classList='form-group  col-md-4';
+//   newDiv.appendChild(newInput1);
+//   newDiv.appendChild(newInput2);
+//   newDiv.appendChild(newInput3);
+//   newDiv.appendChild(newInput4);
+//   newDiv.appendChild(removeButton);
+
+//   container.appendChild(newDiv);
+// }
+
+
+// let inputCountac = 1;
+
+
+
+
+
+
+// function addInputaccFields() {
+//   const containerac = document.getElementById("inputContainer");
+// //   container.classList=' form-group col-md-4'
+
+//   const newInputa1 = document.createElement("input");
+//   newInputa1.type = "text";
+//   newInputa1.placeholder = "@lang('equicare.SPARE_NO')";
+//   newInputa1.name = `code_ac[]`;
+//   newInputa1.id = `inputa${inputCountac}_1`;
+// //   newInput1.classList='form-control'
+
+//   const newInputa2 = document.createElement("input");
+//   newInputa2.type = "text";
+//   newInputa2.placeholder = "Input 2";
+//   newInputa2.name = `name_acce[]`;
+//   newInputa2.id = `inputa${inputCountac}_2`;
+// //   newInput2.classList='form-control'
+
+//   const newInputa3 = document.createElement("input");
+//   newInputa3.type = "text";
+//   newInputa3.placeholder = "@lang('equicare.SPARE_NO')";
+//   newInputa3.name = `piece_number[]`;
+//   newInputa3.id = `inputa${inputCountac}_3`;
+// //   newInput3.classList='form-control'
+
+//   const newInputa4 = document.createElement("input");
+//   newInputa4.type = "text";
+//   newInputa4.placeholder = "Input 4";
+//   newInpuat4.name = `quantity_ac[]`;
+//   newInpuat4.id = `inputa${inputCountac}_4`;
+// //   newInput4.classList='form-control'
+
+//   const removeButtonac = document.createElement("button");
+//   removeButtonac.textContent = "Delete";
+//   removeButtonac.onclick = function() {
+//     containerac.removeChild(this.parentNode);
+//   };
+
+//   const newDivac = document.createElement("div");
+
+//   // Add a class to the new div
+// //   newDiv.classList='form-group  col-md-4';
+// newDivac.appendChild(newInputa1);
+// newDivac.appendChild(newInputa2);
+// newDivac.appendChild(newInputa3);
+// newDivac.appendChild(newInputa4);
+// newDivac.appendChild(removeButtonac);
+
+//   containerac.appendChild(newDivac);
+// }
+
+
+//   const newDiv = document.createElement("div");
+//   newDiv.classList.add("form-group col-md-4 ");
+//   newDiv.appendChild(newInput1);
+//   newDiv.appendChild(newInput2);
+//   newDiv.appendChild(newInput3);
+//   newDiv.appendChild(newInput4);
+//   newDiv.appendChild(removeButton);
+
+//   container.appendChild(newDiv);
+
+//   inputCount++;
+// }
+// Assuming you have a jQuery library available
+$(document).ready(function() {
+    $('#assess_equipment').change(function() {
+        var selectedValue = $(this).val();
+        var equipmentStopsDateTimeContainer = $('.equipment_stops_date_time_container');
+        var reasonsStoppingContainer = $('.reasons_stopping_container');
+
+        if (selectedValue === 'Discontinued service') {
+            equipmentStopsDateTimeContainer.show();
+            reasonsStoppingContainer.show();
+        } else {
+            equipmentStopsDateTimeContainer.hide();
+            reasonsStoppingContainer.hide();
+        }
+    });
+});
+
 // $(document).ready(function() {
+//     $('#reasons_stopping').change(function() {
+//         var selectedValue = $(this).val();
+//         var equipmentStopsDateTimeContainer = $('.equipment_stops_date_time_container');
+//         var reasonsStoppingContainer = $('.reasons_stopping_container');
+
+//         if (selectedValue === 'Malfunction requires spare parts') {
+//             equipmentStopsDateTimeContainer.show();
+//             // reasonsStoppingContainer.show();
+//         } else {
+//             equipmentStopsDateTimeContainer.hide();
+//             reasonsStoppingContainer.hide();
+//         }
+//     });
+// });
+
+// JavaScript
+document.getElementById('reasons_stopping').addEventListener('change', (event) => {
+  if (event.target.value === 'Malfunction requires spare parts') {
+    // Show the modal
+    $('#spare-part-modal').modal('show');
+  }
+});
+
+// Add a click event listener to the "Save" button in the modal
+document.getElementById('save-spare-part').addEventListener('click', () => {
+  // Retrieve the values from the input fields
+  const sparePartName = document.getElementById('spare-part-name').value;
+  const sparePartQuantity = document.getElementById('spare-part-quantity').value;
+  const sparePartType = document.getElementById('spare-part-type').value;
+
+  // Perform any necessary actions with the collected data
+  console.log('Spare Part Name:', sparePartName);
+  console.log('Spare Part Quantity:', sparePartQuantity);
+  console.log('Spare Part Type:', sparePartType);
+
+  // Close the modal
+  $('#spare-part-modal').modal('hide');
+});
+
+
+
+</script>
+<script type="text/javascript">
+	$.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
+</script>
+@endsection
+@section('styles')
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/plugins/datetimepicker/bootstrap-datetimepicker.min.css') }}">
+
+@endsection
+	{{-- @section('scripts')
+	<script src="{{ asset('assets/js/datetimepicker.js') }}" type="text/javascript"></script>
+	<script type="text/javascript">
+	// $(document).ready(function() {
 //     $('#Donor').change(function() {
 //         var selectedValue = $(this).val();
 //         var equipmentStopsDateTimeContainer = $('.namee_donors');
@@ -408,6 +886,59 @@
 //         }
 //     });
 // });
+let inputCount = 1;
+
+function addInputFields() {
+  const container = document.getElementById("inputContainer");
+  container.classList=' form-group col-md-4'
+
+  const newInput1 = document.createElement("input");
+  newInput1.type = "text";
+  newInput1.placeholder = "@lang('equicare.SPARE_NO')";
+  newInput1.name = `SPARE_NO[]`;
+  newInput1.id = `input${inputCount}_1`;
+  newInput1.classList='form-control'
+
+  const newInput2 = document.createElement("input");
+  newInput2.type = "text";
+  newInput2.placeholder = "Input 2";
+  newInput2.name = `spare_name[]`;
+  newInput2.id = `input${inputCount}_2`;
+  newInput2.classList='form-control'
+
+  const newInput3 = document.createElement("input");
+  newInput3.type = "text";
+  newInput3.placeholder = "@lang('equicare.SPARE_NO')";
+  newInput3.name = `quantity[]`;
+  newInput3.id = `input${inputCount}_3`;
+  newInput3.classList='form-control'
+
+  const newInput4 = document.createElement("input");
+  newInput4.type = "text";
+  newInput4.placeholder = "Input 4";
+  newInput4.name = `input${inputCount}_4`;
+  newInput4.id = `input${inputCount}_4`;
+  newInput4.classList='form-control'
+
+  const removeButton = document.createElement("button");
+  removeButton.textContent = "Delete";
+  removeButton.onclick = function() {
+    container.removeChild(this.parentNode);
+  };
+
+  const newDiv = document.createElement("div");
+
+  // Add a class to the new div
+  newDiv.classList='form-group  col-md-4';
+  newDiv.appendChild(newInput1);
+  newDiv.appendChild(newInput2);
+  newDiv.appendChild(newInput3);
+  newDiv.appendChild(newInput4);
+  newDiv.appendChild(removeButton);
+
+  container.appendChild(newDiv);
+}
+
 $(document).ready(function() {
     $('#Donor').change(function() {
         var selectedValue = $(this).val();
@@ -448,4 +979,4 @@ $(document).ready(function() {
 				});
 			});
 		</script>
-	@endsection
+	@endsection --}}

@@ -22,6 +22,11 @@ use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\GovernorateController;
 use App\Http\Controllers\DirectorateController;
 use App\Http\Controllers\TestCalibrationsController;
+use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\PieceController;
+use App\Http\Controllers\EquipmentNameController;
+use App\Http\Controllers\AccessoriesController;
+
 
 use App\Http\Controllers\Type_of_healthfacility_Controllers;
 use App\Http\Controllers\Evaluation_scanController;
@@ -69,7 +74,12 @@ Route::group(['middleware' => ['installed_or_not', 'auth']], function () {
     Route::resource('admin/roles', RoleController::class);
     Route::resource('admin/permissions', PermissionController::class);
     Route::resource('admin/hospitals', HospitalController::class);
-
+    Route::resource('admin/accessories',AccessoriesController::class);
+    Route::resource('admin/suppliers', SupplierController::class);
+    Route::resource('admin/pieces', PieceController::class);
+    Route::resource('admin/equipmentsnames', EquipmentNameController::class);
+    Route::resource('admin/test_and_calibrations', TestCalibrationsController::class);
+    Route::resource('admin/accessories',AccessoriesController::class);  
     Route::get('/admin/equipment/qr/{id}', [EquipmentController::class,'qr'])->name('equipments.qr');
     Route::get('/admin/equipment/qr-image/{id}', [EquipmentController::class,'qr_image'])->name('equipments.qrimage');
     Route::get('/admin/equipments/qr/regen', [EquipmentController::class,'regenerate_all_qr'])->name('equipments.regen');
@@ -154,8 +164,6 @@ Route::group(['middleware' => ['installed_or_not', 'auth']], function () {
 
     // Route::view('admin/Directorates' ,'index');
   // في ملف web.php
-  Route::resource('admin/test_and_calibrations', TestCalibrationsController::class);
-
         Route::view('admin/Directorates','Directorates.index');
         Route::resource('/admin/type_of_healthfacility', Type_of_healthfacility_Controllers::class);
         Route::resource('/admin/evaluation_scans', Evaluation_scanController::class);

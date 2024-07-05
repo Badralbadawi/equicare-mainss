@@ -181,6 +181,27 @@
             <i class="fa fa-stethoscope"></i> <span>@lang('equicare.equipments')</span>
           </a>
         </li>
+        <li class="{{ $page=='accessories'?'active':'' }}">
+          <a href="{{ url('/admin/accessories') }}">
+            <i class="fa fa-stethoscope"></i> <span>@lang('equicare.accessories')</span>
+          </a>
+          <li class="{{ $page=='equipmentsnames'?'active':'' }}">
+            <a href="{{ url('/admin/equipmentsnames') }}">
+              <i class="fa fa-stethoscope"></i> <span>@lang('equicare.equipmentsnames')</span>
+            </a>
+          </li>
+          <li class="{{ $page=='pieces'?'active':'' }}">
+            <a href="{{ url('/admin/pieces') }}">
+              <i class="fa fa-stethoscope"></i> <span>@lang('equicare.pieces')</span>
+            </a>
+          </li>
+          </li>
+          <li class="{{ $page=='suppliers'?'active':'' }}">
+            <a href="{{ url('/admin/suppliers') }}">
+              <i class="fa fa-stethoscope"></i> <span>@lang('equicare.suppliers')</span>
+            </a>
+          </li>
+  
 
 
         

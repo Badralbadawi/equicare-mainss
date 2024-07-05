@@ -642,39 +642,6 @@ $('#department_id').val(value);
 
 let inputCount = 1;
 
-// function addInputFields() {
-//   const container = document.getElementById("inputContainer");
-
-//   const newInput1 = document.createElement("input");
-//   newInput1.type = "text";
-//   newInput1.placeholder = "Input 1";
-//   newInput1.name = `SPARE_NO[]`;
-//   newInput1.id = `input${inputCount}_1`;
-
-
-//   const newInput2 = document.createElement("input");
-//   newInput2.type = "text";
-//   newInput2.placeholder = "Input 2";
-//   newInput2.name = `spare_name[]`;
-//   newInput2.id = `input${inputCount}_2`;
-
-//   const newInput3 = document.createElement("input");
-//   newInput3.type = "text";
-//   newInput3.placeholder = "Input 3";
-//   newInput3.name = `quantity[]`;
-//   newInput3.id = `input${inputCount}_3`;
-
-//   const newInput4 = document.createElement("input");
-//   newInput4.type = "text";
-//   newInput4.placeholder = "Input 4";
-//   newInput4.name = `input${inputCount}_4`;
-//   newInput4.id = `input${inputCount}_4`;
-
-//   const removeButton = document.createElement("button");
-//   removeButton.textContent = "Delete";
-//   removeButton.onclick = function() {
-// 	container.removeChild(this.parentNode);
-//   };
 function addInputFields() {
   const container = document.getElementById("inputContainer");
   container.classList=' form-group col-md-4'

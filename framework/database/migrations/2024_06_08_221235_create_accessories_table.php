@@ -15,8 +15,13 @@ return new class extends Migration
     {
         Schema::create('accessories', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('code');
+            $table->integer('equip_id')->nullable();
+
+            $table->string('name_acce')->nullable();
+            $table->string('code_ac')->nullable();
+            $table->string('piece_number')->nullable();
+            $table->string('quantity_ac')->nullable();
+            $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });
     }
